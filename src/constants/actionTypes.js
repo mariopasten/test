@@ -1,0 +1,1 @@
+export const USER_IN_SESSION= 'USER_IN_SESSION';
