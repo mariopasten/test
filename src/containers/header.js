@@ -10,7 +10,6 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import MenuItem from '@material-ui/core/MenuItem';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
 import Divider from '@material-ui/core/Divider';
@@ -22,29 +21,14 @@ import {Link} from 'react-router-dom';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Button from '@material-ui/core/Button';
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import {getUserInSession} from '../actions/index';
 
 const drawerWidth = 240;
 
 const styles = theme => ({
-    root: {
-        flexGrow: 1,
-    },
-    'navContainer': {
-        '@media (min-width: 960px)': {
-            width: 1218,
-            marginLeft: 'auto',
-            marginRight: 'auto'
-        },
-    },
-    appFrame: {
-        height: 430,
-        zIndex: 1,
-        overflow: 'hidden',
-        position: 'relative',
-        display: 'flex',
-        width: '100%',
-    },
     appBar: {
         position: 'absolute',
         background: '#37474F',
@@ -71,23 +55,25 @@ const styles = theme => ({
     'appBarShift-right': {
         marginRight: drawerWidth
     },
-    menuButton: {
-        marginLeft: 12,
-        marginRight: 20,
-        color: '#FFFFFF',
-    },
-    hide: {
-        display: 'none'
-    },
-    drawerPaper: {
+    appFrame: {
+        height: 430,
+        zIndex: 1,
+        overflow: 'hidden',
         position: 'relative',
-        width: drawerWidth
-    },
-    drawerHeader: {
         display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'flex-end',
-        padding: '0 8px'
+        width: '100%',
+    },
+    avatar: {
+        margin: 10,
+        position: 'absolute',
+        right: 0,
+    },
+    bigAvatar: {
+        width: 60,
+        height: 60,
+    },
+    'container': {
+        marginTop: 50,
     },
     content: {
         flexGrow: 1,
@@ -116,39 +102,40 @@ const styles = theme => ({
     'contentShift-right': {
         marginRight: 0
     },
-    'imgHeaderContainer': {
-        width: 128,
-        height: 64,
-        marginLeft: 'auto',
-        marginRight: 'auto',
-        '@media (min-width: 960px)': {
-            margin: 0,
-            float: 'left',
-            position: 'absolute',
-            top: 0,
-        },
+    drawerPaper: {
+        position: 'relative',
+        width: drawerWidth
+    },
+    drawerHeader: {
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'flex-end',
+        padding: '0 8px'
+    },
+    'headerInfoUser': {
+        position: 'absolute',
+        right: 0,
+        top: 0,
+    },
+    hide: {
+        display: 'none'
     },
     'imgHeader': {
         width: '100%',
         height: '100%',
     },
-    'container': {
-        marginTop: 50,
-    },
-    avatar: {
-        margin: 10,
-        position: 'absolute',
-        right: 0,
-    },
-    bigAvatar: {
-        width: 60,
-        height: 60,
-    },
-    nameHeader: {
-        position: 'absolute',
-        right: 80,
-        top: 20,
-        color: '#FFFFFF',
+    'imgHeaderContainer': {
+        width: 128,
+        height: 64,
+        position: 'relative',
+        marginLeft: 'auto',
+        marginRight: 'auto',
+        '@media (min-width: 960px)': {
+            margin: 0,
+            float: 'left',
+            position: 'relative',
+            top: 0,
+        },
     },
     'loginText': {
         margin: theme.spacing.unit,
@@ -165,6 +152,28 @@ const styles = theme => ({
             left: '-10px',
         },
     },
+    menuButton: {
+        marginLeft: 12,
+        marginRight: 20,
+        color: '#FFFFFF',
+    },
+    nameHeader: {
+        position: 'absolute',
+        right: 80,
+        top: 20,
+        color: '#FFFFFF',
+    },
+    'navContainer': {
+        '@media (min-width: 960px)': {
+            width: 1218,
+            marginLeft: 'auto',
+            marginRight: 'auto',
+            position: 'relative'
+        },
+    },
+    'navItem': {
+        minWidth: 0
+    },
     'navMenu': {
         position: 'absolute',
         top: 5,
@@ -172,13 +181,13 @@ const styles = theme => ({
         marginLeft: '22%',
         marginRight: '22%',
     },
-    'navItem': {
-        minWidth: 0
+    progress: {
+        marginLeft: '40%',
+        marginRight: '40%',
+        width: '20%'
     },
-    'headerInfoUser': {
-        position: 'absolute',
-        right: 0,
-        top: 0,
+    root: {
+        flexGrow: 1,
     },
 });
 
@@ -187,39 +196,42 @@ class Header extends React.Component {
         super(props);
         this.state = {
             open: false,
-            anchor: 'left'
+            anchor: 'left',
+            anchorEl: null,
+            completed: 0,
         };
         this.handleDrawerOpen = this.handleDrawerOpen.bind(this);
         this.handleDrawerClose = this.handleDrawerClose.bind(this);
-        this.handleChangeAnchor = this.handleChangeAnchor.bind(this);
+        this.handleClick = this.handleClick.bind(this);
+        this.handleClose = this.handleClose.bind(this);
         this.props.getUserInSession();
     }
 
-    handleDrawerOpen() {
-        this.setState({open: true});
+    handleClick(event) {
+        this.setState({ anchorEl: event.currentTarget });
+    };
+
+    handleClose() {
+        this.setState({ anchorEl: null });
     };
 
     handleDrawerClose() {
         this.setState({open: false});
     };
 
-    handleChangeAnchor() {
-        this.setState({anchor: event.target.value});
+    handleDrawerOpen() {
+        this.setState({open: true});
     };
 
     render() {
         const {classes, theme} = this.props;
-        const {anchor, open} = this.state;
+        const {anchor, open, anchorEl} = this.state;
 
         const drawer = (
             <Drawer variant="persistent" anchor={anchor} open={open} classes={{
                 paper: classes.drawerPaper
             }}>
                 <div className={classes.drawerHeader}></div>
-                {/* <Divider/>
-                <List>uno</List>
-                <Divider/>
-                <List>dos</List> */}
                 <List component="nav">
                     <ListItem button component={Link} to={`/home`} >
                         <ListItemText primary="Inicio" />
@@ -249,10 +261,8 @@ class Header extends React.Component {
             </Drawer>
         );
 
-
-
         if(!this.props.userInSession) {
-            return <h1>Cargando...</h1>
+            return <CircularProgress className={classes.progress} size={100} />
         }
 
         return (
@@ -278,7 +288,24 @@ class Header extends React.Component {
                                         <Tab className={classes.navItem} label="Cursos" />
                                         <Tab className={classes.navItem} label="Alianza"/>
                                         <Tab className={classes.navItem} label="Empresa"/>
-                                        <Tab className={classes.navItem} label="Universo Mayahii"/>
+                                        <Tab
+                                            className={classes.navItem}
+                                            label="Universo Mayahii"
+                                            aria-owns={anchorEl ? 'simple-menu' : null}
+                                            aria-haspopup="true"
+                                            onClick={this.handleClick}
+                                        />
+
+                                        <Menu
+                                          id="simple-menu"
+                                          anchorEl={anchorEl}
+                                          open={Boolean(anchorEl)}
+                                          onClose={this.handleClose}
+                                        >
+                                          <MenuItem onClick={this.handleClose}>Profile</MenuItem>
+                                          <MenuItem onClick={this.handleClose}>My account</MenuItem>
+                                          <MenuItem onClick={this.handleClose}>Logout</MenuItem>
+                                        </Menu>
                                     </Tabs>
                                 </Hidden>
                                 {
