@@ -44,11 +44,11 @@ const styles = theme => ({
     hide: {
         display: 'none'
     },
-    'imgHeader': {
+    imgHeader: {
         width: '100%',
         height: '100%'
     },
-    'imgHeaderContainer': {
+    imgHeaderContainer: {
         width: 128,
         height: 64,
         position: 'relative',
@@ -66,7 +66,7 @@ const styles = theme => ({
     list: {
         width: 250
     },
-    'loginText': {
+    loginText: {
         margin: theme.spacing.unit,
         margin: 0,
         top: 10,
@@ -86,18 +86,24 @@ const styles = theme => ({
         top: 20,
         color: '#FFFFFF'
     },
-    'navContainer': {
+    navContainer: {
         '@media (min-width: 960px)': {
-            width: 1218,
+            width: 960,
+            marginLeft: 'auto',
+            marginRight: 'auto',
+            position: 'relative'
+        },
+        '@media (min-width: 1200px)': {
+            width: 1200,
             marginLeft: 'auto',
             marginRight: 'auto',
             position: 'relative'
         }
     },
-    'navItem': {
+    navItem: {
         minWidth: 0
     },
-    'navMenu': {
+    navMenu: {
         position: 'absolute',
         top: 5,
         width: '56%',
