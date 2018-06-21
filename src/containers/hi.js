@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
+import PropTypes from 'prop-types';
 import {getUserInSession} from '../actions/index';
 
 class Hi extends Component {
@@ -9,7 +10,7 @@ class Hi extends Component {
     }
     render() {
         return(
-            <h1>Hola Mundo!!!</h1>
+            <h1>Hola !!!</h1>
         );
     }
 }
