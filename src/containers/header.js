@@ -66,7 +66,7 @@ const styles = theme => ({
     list: {
         width: 250
     },
-    loginText: {
+    'loginText': {
         margin: theme.spacing.unit,
         margin: 0,
         top: 10,
@@ -93,12 +93,6 @@ const styles = theme => ({
             marginRight: 'auto',
             position: 'relative'
         },
-        '@media (min-width: 1200px)': {
-            width: 1200,
-            marginLeft: 'auto',
-            marginRight: 'auto',
-            position: 'relative'
-        }
     },
     navItem: {
         minWidth: 0
@@ -179,22 +173,24 @@ class Header extends React.Component {
                         </Hidden>
                         <div className={classes.navContainer}>
                             <figure className={classes.imgHeaderContainer}>
-                                <img src="http://educadores21cdmx.mayahii.com/img/loog_mayahii.png" alt="" className={classes.imgHeader}/>
+                                <img src="https://s3.amazonaws.com/mayahii-frontend/img/mayahiiLogoNew.png" alt="" className={classes.imgHeader}/>
                             </figure>
                             <Hidden smDown="smDown">
                                 <Tabs className={classes.navMenu}>
-                                    <Tab button="button" component={Link} to={`/landing`} className={classes.navItem} label="Inicio"/>
-                                    <Tab className={classes.navItem} label="Cursos"/>
-                                    <Tab className={classes.navItem} label="Alianza"/>
-                                    <Tab className={classes.navItem} label="Empresa"/>
+                                    {/* <Tab button="button" component={Link} to={`/landing`} className={classes.navItem} label="Inicio"/> */}
+                                    <Tab className={classes.navItem} button="button" component={Link} to={`/misCursos`} label="Mis Cursos"/>
+                                    <Tab className={classes.navItem} button="button" component={Link} to={`/landing`} label="Recursos Abiertos"/>
+                                    {/* <Tab className={classes.navItem} label="Alianza"/>
+                                    <Tab className={classes.navItem} label="Empresa"/> */}
                                     <Tab className={classes.navItem} label="Universo Mayahii" aria-owns={anchorEl
                                             ? 'simple-menu'
                                             : null} aria-haspopup="true" onClick={this.handleClick}/>
 
                                     <Menu id="simple-menu" anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={this.handleClose}>
-                                        <MenuItem onClick={this.handleClose}>Profile</MenuItem>
-                                        <MenuItem onClick={this.handleClose}>My account</MenuItem>
-                                        <MenuItem onClick={this.handleClose}>Logout</MenuItem>
+                                        <MenuItem onClick={this.handleClose}><a href="https://www.mayahii.com/catalogos/adminProductos.action" target="_blank">Academias</a></MenuItem>
+                                        <MenuItem onClick={this.handleClose}><a href="https://www.mayahii.com/educadores" target="_blank">Mayahii Educadores</a></MenuItem>
+                                        <MenuItem onClick={this.handleClose}><a href="https://www.mayahii.com/formacioncontinua" target="_blank">Mayahii Formación Continua</a></MenuItem>
+                                        <MenuItem onClick={this.handleClose}><a href="https://www.mayahii.com/campusgoogle" target="_blank">Mayahii Campus Google</a></MenuItem>
                                     </Menu>
                                 </Tabs>
                             </Hidden>

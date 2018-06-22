@@ -131,7 +131,7 @@ class Login extends Component {
                         <div>
                             <aside className={classes.descriptionRegisterContainer}>
                                 <figure className={classes.imgRegisterContainer}>
-                                    <img className={classes.imgRegister} src="https://s3.amazonaws.com/mayahii-frontend/img/registerImage.png" alt=""/>
+                                    <img className={classes.imgRegister} src="https://s3.amazonaws.com/mayahii-frontend/img/loginImage.png" alt=""/>
                                 </figure>
                                 <Typography className={classes.helpCenter} variant="title" gutterBottom>
                                     ¿Problemas para acceder? Ponte en contacto con nosotros

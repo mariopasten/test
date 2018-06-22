@@ -10,6 +10,7 @@ import Bye from './bye';
 import Landing from './landing';
 import Login from './login';
 import Register from './register';
+import RedirectPage from '../components/redirectPage';
 import Container from '../components/container';
 const createStoreWithMiddleware = applyMiddleware(promise)(createStore);
 
@@ -23,6 +24,8 @@ class App extends Component {
                             <Switch>
                                 <Route path="/login" component={Login}/>
                                 <Route path="/register" component={Register}/>
+                                <Route path='/misCursos' component={(RedirectPage) => window.location = 'https://www.mayahii.com/#!/user/myCourses'}/>
+                                <Route path='/ra' component={(RedirectPage) => window.location = 'https://www.mayahii.com/#!/RAs'}/>
                                 <Route path="/landing" component={Landing}/>
                                 <Route path="/" component={Bye}/>
                             </Switch>
