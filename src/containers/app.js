@@ -9,6 +9,7 @@ import Header from './header';
 import Bye from './bye';
 import Landing from './landing';
 import Login from './login';
+import Register from './register';
 import Container from '../components/container';
 const createStoreWithMiddleware = applyMiddleware(promise)(createStore);
 
@@ -21,6 +22,7 @@ class App extends Component {
                         <Header />
                             <Switch>
                                 <Route path="/login" component={Login}/>
+                                <Route path="/register" component={Register}/>
                                 <Route path="/landing" component={Landing}/>
                                 <Route path="/" component={Bye}/>
                             </Switch>

@@ -8,15 +8,27 @@ import {getUserInSession} from '../actions/index';
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import {Link} from 'react-router-dom';
 import {getLogin} from '../actions/index';
 
 const styles = theme => ({
+    button: {
+        width: '40%',
+        marginLeft: '30%',
+        marginRight: '30%',
+    },
     descriptionRegisterContainer: {
         width: '40%',
         marginLeft: '5%',
         marginRight: '5%',
         height: 'auto',
         float: 'left',
+    },
+    forgotPassword: {
+        width: '50%',
+        marginLeft: '25%',
+        marginRight: '25%',
+        marginTop: 20,
     },
     helpCenter: {
         textAlign: 'center',
@@ -32,6 +44,12 @@ const styles = theme => ({
         height: '100%',
     },
     navContainer: {
+        '@media (min-width: 960px)': {
+            width: 960,
+            marginLeft: 'auto',
+            marginRight: 'auto',
+            position: 'relative'
+        },
         '@media (min-width: 1200px)': {
             width: 1200,
             marginLeft: 'auto',
@@ -43,9 +61,15 @@ const styles = theme => ({
         display: 'none',
     },
     registerSection: {
-        width: '50%',
+        width: '45%',
         float: 'left',
         marginTop: 20,
+        marginLeft: '2.5%',
+        marginRight: '2.5%',
+    },
+    registerOption: {
+        float: 'left',
+        marginTop: 6,
     },
     registerText: {
         textAlign: 'left'
@@ -67,8 +91,6 @@ class Login extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-
-
     handleUserChange(event) {
         this.setState({userEmail: event.target.value});
     }
@@ -84,17 +106,9 @@ class Login extends Component {
     }
 
     shouldComponentUpdate(nextProps){
-        // if(nextProps.getLoginUser.value.indexOf("false")>= 0) {
-        //     const warningTextStatus = document.getElementById('warningTextStatus')
-        //     warningTextStatus.style.display = "block";
-        //     setTimeout(function() {
-        //         warningTextStatus.style.display = "none";
-        //     }, 3000);
-        // }else if(nextProps.getLoginUser.value.indexOf("true")>= 0) {
-        //     alert("entra")
-        // }
-        console.log("should")
-        console.log(nextProps)
+        if(nextProps.getLoginUser != null) {
+            window.location.href = '/';
+        }
         return true;
     }
 
@@ -151,15 +165,37 @@ class Login extends Component {
                                         />
                                         <Button
                                             raised
-                                            color="secondary"
+                                            variant="contained"
                                             className={classes.button}
                                             type="submit"
                                             value="Submit"
+                                            color="primary"
                                             disabled = {this.state.buttonState}
                                         >
                                             Iniciar sesión
                                         </Button>
                                     </form>
+                                    <Button
+                                        color="primary"
+                                        component={Link}
+                                        to="/forgotPassword"
+                                        className={classes.forgotPassword}
+                                    >
+                                        Olvidé mi contraseña
+                                    </Button>
+                                    <aside>
+                                        <Typography className={classes.registerOption} variant="body2" gutterBottom>
+                                            ¿No tienes cuenta?
+                                        </Typography>
+                                        <Button
+                                            color="primary"
+                                            component={Link}
+                                            to="/register"
+                                            className={classes.register}
+                                        >
+                                            Registrate
+                                        </Button>
+                                    </aside>
                                     {/* <p id="warningTextStatus" className={classes.warningTextStatus}>
                                         * Tu usuario y contraseña no coinciden.
                                         Vuelve a escribirlos o restablece tu
