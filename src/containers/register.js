@@ -7,8 +7,15 @@ import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 import Checkbox from '@material-ui/core/Checkbox';
 import Button from '@material-ui/core/Button';
+import {getRegisterNewUser} from '../actions/index';
+import {Link} from 'react-router-dom';
 
 const styles = theme => ({
+    button: {
+        width: '40%',
+        marginLeft: '30%',
+        marginRight: '30%',
+    },
     descriptionText: {
         marginTop: 35,
         marginBottom: 10,
@@ -26,6 +33,16 @@ const styles = theme => ({
         float: 'left',
         marginLeft: '1.5%',
         marginRight: '1.5%',
+    },
+    loginContainer: {
+        marginTop: 20,
+    },
+    loginOption: {
+        float: 'left',
+        marginTop: 6,
+    },
+    loginText: {
+        textAlign: 'left'
     },
     navContainer: {
         marginTop: 20,
@@ -66,14 +83,16 @@ class Register extends Component {
             lastName: '',
             email: '',
             userPassword: '',
-            checkedTerms: false,
+            checkedTerms: true,
         };
+        this.handleChange = this.handleChange.bind(this);
         this.handleNameChange = this.handleNameChange.bind(this);
         this.handleLastNameChange = this.handleLastNameChange.bind(this);
         this.handleEmailChange = this.handleEmailChange.bind(this);
         this.handlePasswordChange = this.handlePasswordChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
+
     handleNameChange(event) {
         this.setState({name: event.target.value});
     }
@@ -90,12 +109,12 @@ class Register extends Component {
         this.setState({userPassword: event.target.value});
     }
 
-    handleChange(){
-        this.setState({ checkedTerms: true });
-    }
+    handleChange(event) {
+        // console.log(event)
+        // this.setState({ checkedTerms: false });
+    };
 
     handleSubmit(event) {
-        alert("entra")
         event.preventDefault();
         const emailReg = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})?$/;
         if(this.state.name.length == 0) {
@@ -139,18 +158,20 @@ class Register extends Component {
             }, 3000);
             return false;
         }
-        // this.props.getRegisterNewUser(this.state.name, this.state.lastName, this.state.email, this.state.userPassword, this.state.checkedTerms);
+        this.props.getRegisterNewUser(this.state.name, this.state.lastName, this.state.email, this.state.userPassword, this.state.checkedTerms);
+
     }
 
-    // componentWillReceiveProps(nextProps){
-    //     if(nextProps.registerNewUser != null){
-    //         if(nextProps.registerNewUser.value) {
-    //             window.location.href = "/";
-    //         }else {
-    //             alert("Hubo un problema con tu registro, intentalo más tarde")
-    //         }
-    //     }
-    // }
+    shouldComponentUpdate(nextProps){
+        if(nextProps.registerNewUser != null){
+            if(nextProps.registerNewUser.value) {
+                window.location.href = "/dist";
+            }else {
+                alert("Hubo un problema con tu registro, intentalo más tarde")
+            }
+        }
+        return true;
+    }
 
     render() {
         const {classes, theme} = this.props;
@@ -217,23 +238,37 @@ class Register extends Component {
                         />
                         <Checkbox
                             checked={this.state.checkedTerms}
-                            onChange={this.handleChange}
-                            aria-label="checkedTerms"
+                            onChange={this.handleChange('checkedTerms')}
+                            value="checkedTerms"
+                            color="primary"
                         />
                         <a href={`https://www.mayahii.com/#!/t/terms`} target="_blank">
                             Acepto los Términos de Servicio
                         </a>
                         <Button
                             raised
-                            color="primary"
+                            variant="contained"
                             className={classes.button}
                             type="submit"
                             value="Submit"
-                            disabled = {this.state.buttonState}
+                            color="primary"
                         >
                             Registrarse
                         </Button>
                     </form>
+                    <aside className={classes.loginContainer}>
+                        <Typography className={classes.loginOption} variant="body2" gutterBottom>
+                            Ya tengo cuenta
+                        </Typography>
+                        <Button
+                            color="primary"
+                            component={Link}
+                            to="/login"
+                            className={classes.register}
+                        >
+                            Iniciar sesión
+                        </Button>
+                    </aside>
                 </section>
                 <aside className={classes.imageRegisterContainer}>
                     <figure className={classes.imageRegister}>
@@ -245,10 +280,10 @@ class Register extends Component {
     }
 }
 
-function mapStateToProps({}) {
-    return ({});
+function mapStateToProps({registerNewUser}) {
+    return ({registerNewUser});
 }
 
 export default withStyles(styles)(
- connect(mapStateToProps,{})(Register)
+ connect(mapStateToProps,{getRegisterNewUser})(Register)
 );

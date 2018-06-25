@@ -93,6 +93,12 @@ const styles = theme => ({
             marginRight: 'auto',
             position: 'relative'
         },
+        '@media (min-width: 1280px)': {
+            width: 1280,
+            marginLeft: 'auto',
+            marginRight: 'auto',
+            position: 'relative'
+        },
     },
     navItem: {
         minWidth: 0

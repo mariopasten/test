@@ -7,7 +7,7 @@ import {getUserInSession} from '../actions/index';
 import {BrowserRouter as Router, Route, Link, Switch, Redirect} from 'react-router-dom';
 import Header from './header';
 import Bye from './bye';
-import Landing from './landing';
+import Landing from '../components/landing';
 import Login from './login';
 import Register from './register';
 import RedirectPage from '../components/redirectPage';
@@ -27,7 +27,7 @@ class App extends Component {
                                 <Route path='/misCursos' component={(RedirectPage) => window.location = 'https://www.mayahii.com/#!/user/myCourses'}/>
                                 <Route path='/ra' component={(RedirectPage) => window.location = 'https://www.mayahii.com/#!/RAs'}/>
                                 <Route path="/landing" component={Landing}/>
-                                <Route path="/" component={Bye}/>
+                                <Route path="/" component={Landing}/>
                             </Switch>
                     </Container>
                 </Router>

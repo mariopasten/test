@@ -107,7 +107,7 @@ class Login extends Component {
 
     shouldComponentUpdate(nextProps){
         if(nextProps.getLoginUser != null) {
-            window.location.href = '/';
+            window.location.href = '/dist';
         }
         return true;
     }
