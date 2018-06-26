@@ -21,15 +21,20 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import Avatar from '@material-ui/core/Avatar';
 import {getUserInSession} from '../actions/index';
+import {getLogOut} from '../actions/index';
 
 const drawerWidth = 240;
 
 const styles = theme => ({
+    btnUserMenu: {
+        width: '100%',
+    },
     appBar: {
-        background: '#37474F'
+        background: '#37474F',
+        position: 'fixed',
     },
     avatar: {
-        margin: 10,
+        margin: 0,
         position: 'absolute',
         right: 0
     },
@@ -39,7 +44,8 @@ const styles = theme => ({
     'headerInfoUser': {
         position: 'absolute',
         right: 0,
-        top: 0
+        top: 13,
+        width: '22%',
     },
     hide: {
         display: 'none'
@@ -69,7 +75,7 @@ const styles = theme => ({
     'loginText': {
         margin: theme.spacing.unit,
         margin: 0,
-        top: 10,
+        top: 15,
         right: 15,
         position: 'absolute',
         '@media (min-width: 960px)': {
@@ -82,9 +88,12 @@ const styles = theme => ({
     },
     nameHeader: {
         position: 'absolute',
-        right: 80,
-        top: 20,
-        color: '#FFFFFF'
+        right: 0,
+        top: 8,
+        color: '#FFFFFF',
+        width: '75%',
+        textAlign: 'right',
+        paddingRight: 60,
     },
     navContainer: {
         '@media (min-width: 960px)': {
@@ -94,7 +103,7 @@ const styles = theme => ({
             position: 'relative'
         },
         '@media (min-width: 1280px)': {
-            width: 1280,
+            width: '100%',
             marginLeft: 'auto',
             marginRight: 'auto',
             position: 'relative'
@@ -105,7 +114,7 @@ const styles = theme => ({
     },
     navMenu: {
         position: 'absolute',
-        top: 5,
+        top: 8,
         width: '56%',
         marginLeft: '22%',
         marginRight: '22%'
@@ -117,7 +126,13 @@ const styles = theme => ({
     },
     root: {
         flexGrow: 1
-    }
+    },
+    toolBar: {
+        padding: 0,
+        width: '80%',
+        marginLeft: '10%',
+        marginRight: '10%',
+    },
 });
 
 class Header extends React.Component {
@@ -125,10 +140,14 @@ class Header extends React.Component {
         super(props);
         this.state = {
             left: false,
-            anchorEl: null
+            anchorEl: null,
+            userMenu: null,
         };
+        this.handleLogOut = this.handleLogOut.bind(this);
         this.handleClick = this.handleClick.bind(this);
         this.handleClose = this.handleClose.bind(this);
+        this.handleClickUser = this.handleClickUser.bind(this);
+        this.handleCloseUser = this.handleCloseUser.bind(this);
         this.handleDrawerClose = this.handleDrawerClose.bind(this);
         this.handleDrawerOpen = this.handleDrawerOpen.bind(this);
         this.props.getUserInSession();
@@ -142,6 +161,14 @@ class Header extends React.Component {
         this.setState({anchorEl: null});
     };
 
+    handleClickUser(event) {
+        this.setState({ userMenu: event.currentTarget });
+    };
+
+    handleCloseUser() {
+        this.setState({userMenu: null});
+    };
+
     handleDrawerClose() {
         this.setState({left: false});
     };
@@ -150,9 +177,18 @@ class Header extends React.Component {
         this.setState({left: true});
     };
 
+    handleLogOut() {
+        this.props.toggle;
+        this.props.getLogOut();
+        setTimeout(function(){
+            window.location.href = "/"
+        }, 1000);
+
+    }
+
     render() {
         const {classes} = this.props;
-        const {anchorEl} = this.state;
+        const {anchorEl, userMenu} = this.state;
         if (!this.props.userInSession) {
             return <CircularProgress className={classes.progress} size={100}/>
         }
@@ -160,7 +196,7 @@ class Header extends React.Component {
         return (
             <div className={classes.root}>
                 <AppBar position="static" className={classes.appBar}>
-                    <Toolbar>
+                    <Toolbar className={classes.toolBar}>
                         <Hidden mdUp="mdUp">
                             <Button onClick={this.handleDrawerOpen}>
                                 <Icon>menu</Icon>
@@ -184,7 +220,7 @@ class Header extends React.Component {
                             <Hidden smDown="smDown">
                                 <Tabs className={classes.navMenu}>
                                     {/* <Tab button="button" component={Link} to={`/landing`} className={classes.navItem} label="Inicio"/> */}
-                                    <Tab className={classes.navItem} button="button" component={Link} to={`/misCursos`} label="Mis Cursos"/>
+                                    <Tab className={classes.navItem} button="button" component={Link} to={`/myCourses`} label="Mis Cursos"/>
                                     <Tab className={classes.navItem} button="button" component={Link} to={`/landing`} label="Recursos Abiertos"/>
                                     {/* <Tab className={classes.navItem} label="Alianza"/>
                                     <Tab className={classes.navItem} label="Empresa"/> */}
@@ -202,14 +238,29 @@ class Header extends React.Component {
                             </Hidden>
                             {
                                 !this.props.userInSession.usuario
-                                    ? <Button className={classes.loginText} variant="contained" component={Link} to={`/login`}>
+                                    ?   <Button className={classes.loginText} variant="contained" component={Link} to={`/login`}>
                                             Iniciar sesión
                                         </Button>
-                                    : <div className={classes.headerInfoUser}>
-                                            <Hidden xsDown="xsDown">
-                                                <Typography className={classes.nameHeader}>{this.props.userInSession.nombre}</Typography>
-                                            </Hidden>
-                                            <Avatar alt="User Image" src={this.props.userInSession.foto} className={classes.avatar}/>
+                                    :   <div className={classes.headerInfoUser}>
+                                            <Button
+                                                aria-owns={userMenu ? 'fade-menu' : null}
+                                                aria-haspopup="true"
+                                                onClick={this.handleClickUser}
+                                                className={classes.btnUserMenu}
+                                            >
+                                                <Hidden xsDown="xsDown">
+                                                    <Typography className={classes.nameHeader}>{this.props.userInSession.nombre}</Typography>
+                                                </Hidden>
+                                                <Avatar alt="User Image" src={this.props.userInSession.foto} className={classes.avatar}/>
+                                            </Button>
+                                            <Menu
+                                                id="fade-menu"
+                                                anchorEl={userMenu}
+                                                open={Boolean(userMenu)}
+                                                onClose={this.handleCloseUser}
+                                            >
+                                                <MenuItem onClick={this.handleLogOut}>Logout</MenuItem>
+                                            </Menu>
                                         </div>
                             }
                         </div>
@@ -220,8 +271,8 @@ class Header extends React.Component {
     }
 }
 
-function mapStateToProps({userInSession}) {
-    return ({userInSession});
+function mapStateToProps({userInSession, logOutUser}) {
+    return ({userInSession, logOutUser});
 }
 
-export default withStyles(styles)(connect(mapStateToProps, {getUserInSession})(Header));
+export default withStyles(styles)(connect(mapStateToProps, {getUserInSession, getLogOut})(Header));

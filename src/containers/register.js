@@ -45,7 +45,7 @@ const styles = theme => ({
         textAlign: 'left'
     },
     navContainer: {
-        marginTop: 20,
+        top: 64,
         '@media (min-width: 960px)': {
             width: 960,
             marginLeft: 'auto',

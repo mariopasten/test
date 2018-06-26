@@ -44,6 +44,7 @@ const styles = theme => ({
         height: '100%',
     },
     navContainer: {
+        top: 64,
         '@media (min-width: 960px)': {
             width: 960,
             marginLeft: 'auto',
@@ -106,9 +107,14 @@ class Login extends Component {
     }
 
     shouldComponentUpdate(nextProps){
-        if(nextProps.getLoginUser != null) {
-            window.location.href = '/dist';
+        if(nextProps.getLoginUser != null){
+            if(this.props.prevUrl != null) {
+                window.location.href = `/${nextProps.prevUrl}`;
+            }else {
+                window.location.href = '/';
+            }
         }
+
         return true;
     }
 
