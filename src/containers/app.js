@@ -10,6 +10,7 @@ import Bye from './bye';
 import Landing from '../components/landing';
 import Login from './login';
 import Register from './register';
+import AllMyCourses from './allMyCourses';
 import MyCoursesContainer from './myCourses';
 import RedirectPage from '../components/redirectPage';
 import Container from '../components/container';
@@ -25,7 +26,7 @@ class App extends Component {
                             <Switch>
                                 <Route path="/login" component={Login}/>
                                 <Route path="/register" component={Register}/>
-                                <Route path='/myCourses' component={MyCoursesContainer}/>
+                                <Route path='/myCourses' component={AllMyCourses}/>
                                 <Route path='/ra' component={(RedirectPage) => window.location = 'https://www.mayahii.com/#!/RAs'}/>
                                 <Route path="/landing" component={Landing}/>
                                 <Route path="/" component={Landing}/>

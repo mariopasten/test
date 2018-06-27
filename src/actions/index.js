@@ -4,6 +4,8 @@ import {GET_LOGIN} from '../constants/actionTypes';
 import {REGISTER_NEW_USER} from '../constants/actionTypes';
 import {GET_MY_COURSES} from '../constants/actionTypes';
 import {LOGOUT_USER} from '../constants/actionTypes';
+import {GET_MY_POPULATIONS} from '../constants/actionTypes';
+import {GET_COURSES_BY_POPULATION} from '../constants/actionTypes';
 
 const protocol = "https";
 const subDomainString = "www";
@@ -56,7 +58,7 @@ export function getRegisterNewUser(firstName, lastName, emailUser, passUser, ter
 }
 
 export function getMyCourses(){
-    const request = axios.get(protocol+'://'+subDomainString+'.mayahii.com/miMayahii/get_mis_series.action',{
+    const request = axios.get(protocol+'://'+subDomainString+'.mayahii.com/miMayahii/get_mis_series',{
         params: {
 
         },
@@ -75,6 +77,31 @@ export function getLogOut(){
     });
     return {
         type: "LOGOUT_USER",
+        payload: request
+    }
+}
+
+export function getMyPopulations(){
+    const request = axios.get(protocol+'://'+subDomainString+'.mayahii.com/population/populationsByUser',{
+        params: {
+            user: true,
+        },
+        withCredentials:true
+    });
+    return {
+        type: "GET_MY_POPULATIONS",
+        payload: request
+    }
+}
+export function getCoursesByPopulation(uuid){
+    const request = axios.get(`https://7rzcy6ga70.execute-api.us-east-1.amazonaws.com/prod/population/contents`,{
+        params: {
+            courses: true,
+            uuidPopulation: uuid,
+        }
+    });
+    return {
+        type: "GET_COURSES_BY_POPULATION",
         payload: request
     }
 }

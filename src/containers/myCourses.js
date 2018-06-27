@@ -69,7 +69,6 @@ class MyCoursesContainer extends Component {
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
-        console.log(this.props)
         this.props.getMyCourses();
     }
     render() {
