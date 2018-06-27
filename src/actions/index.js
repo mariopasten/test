@@ -94,11 +94,9 @@ export function getMyPopulations(){
     }
 }
 export function getCoursesByPopulation(uuid){
-    const request = axios.get(`https://7rzcy6ga70.execute-api.us-east-1.amazonaws.com/prod/population/contents`,{
-        params: {
-            courses: true,
-            uuidPopulation: uuid,
-        }
+    const request = axios.post(`https://7rzcy6ga70.execute-api.us-east-1.amazonaws.com/prod/population/contents`,{
+        courses: true,
+        uuidPopulation: uuid,
     });
     return {
         type: "GET_COURSES_BY_POPULATION",

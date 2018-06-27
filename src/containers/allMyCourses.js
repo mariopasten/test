@@ -57,12 +57,17 @@ const styles = theme => ({
     }
 });
 
+let uuidPrev = null;
+let renderCourses = [];
 class AllMyCourses extends Component {
     constructor(props) {
         super(props);
         this.state = {
             loadPopulations: false,
+            showCourses: false,
+            expanded: null,
         };
+        this.handleChangeExpansion = this.handleChangeExpansion.bind(this);
     }
 
     componentDidMount() {
@@ -70,20 +75,38 @@ class AllMyCourses extends Component {
     }
 
     handleClickCoursesByPopulation(uuid) {
-        // this.props.getCoursesByPopulation(uuid);
+        if (uuidPrev != uuid) {
+            if(!this.state.showCourses) {
+                uuidPrev = uuid;
+                this.props.getCoursesByPopulation(uuid);
+            }
+        }
     }
 
+    handleChangeExpansion(uuid, expanded){
+        if(expanded == uuid) {
+            this.setState({expanded: false});
+        }else {
+            this.setState({expanded: uuid});
+        }
+    }
     shouldComponentUpdate(nextProps, nextState){
         if(nextProps.userInSession != null && nextProps.myPopulations == null && nextState.loadPopulations == false) {
             this.props.getMyPopulations();
             this.setState({loadPopulations: true});
         }
+        // console.log(nextProps.coursesByPopulation)
+        if(nextProps.coursesByPopulation != null) {
+            renderCourses = nextProps.coursesByPopulation[0];
+
+        }
+        console.log(renderCourses)
         return true;
     }
 
     render() {
         const {classes, theme} = this.props;
-
+        const { expanded } = this.state;
         let render = null;
         if (!this.props.userInSession) {
             return <CircularProgress className={classes.progress} size={100}/>
@@ -109,13 +132,20 @@ class AllMyCourses extends Component {
                                 </ExpansionPanel>
                                 {this.props.myPopulations != null && this.props.myPopulations.map(population => {
                                     return (
-                                        <ExpansionPanel>
+                                        <ExpansionPanel expanded={expanded === `${population.uuid}`} onChange={() => this.handleChangeExpansion(population.uuid, this.state.expanded)}>
                                             <ExpansionPanelSummary onClick={() => this.handleClickCoursesByPopulation(population.uuid)} expandIcon={<ExpandMoreIcon />}>
                                                 <Typography className={classes.heading}>
                                                     {population.populationName}
                                                 </Typography>
                                             </ExpansionPanelSummary>
                                             <ExpansionPanelDetails>
+                                                {
+                                                    renderCourses.map(renderCourse => {
+                                                        return(
+                                                            <p>{renderCourse.idCourse}</p>
+                                                        )
+                                                    })
+                                                }
                                             </ExpansionPanelDetails>
                                         </ExpansionPanel>
                                     );
