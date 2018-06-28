@@ -32,11 +32,10 @@ const styles = theme => ({
     },
     navContainer: {
         '@media (min-width: 1280px)': {
-            width: '80%',
-            marginLeft: '10%',
-            marginRight: '10%',
+            width: '98%',
+            marginLeft: '1%',
+            marginRight: '1%',
             position: 'relative',
-            paddingTop: 65,
         }
     },
     progress: {
