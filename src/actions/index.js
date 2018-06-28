@@ -6,6 +6,7 @@ import {GET_MY_COURSES} from '../constants/actionTypes';
 import {LOGOUT_USER} from '../constants/actionTypes';
 import {GET_MY_POPULATIONS} from '../constants/actionTypes';
 import {GET_COURSES_BY_POPULATION} from '../constants/actionTypes';
+import {GET_INFINITE_DATA} from '../constants/actionTypes';
 
 const protocol = "https";
 const subDomainString = "www";
@@ -100,6 +101,24 @@ export function getCoursesByPopulation(uuid){
     });
     return {
         type: "GET_COURSES_BY_POPULATION",
+        payload: request
+    }
+}
+
+export function getInfinite(academy, academyOrigin, user, idTransmitter){
+    const request = axios.get(protocol+'://'+subDomainString+'.mayahii.com/panel/get_store_courses.action',{
+        params: {
+            academy: academy,
+            academyOrigin: academyOrigin,
+            user: user,
+            idTransmitter: idTransmitter,
+            page: 0,
+            limit: 1000,
+        },
+        withCredentials:true
+    });
+    return {
+        type: "GET_INFINITE_DATA",
         payload: request
     }
 }

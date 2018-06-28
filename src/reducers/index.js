@@ -6,6 +6,7 @@ import MyCourses from './get_my_courses_reducer';
 import LogOutUser from './logout_reducer';
 import MyPopulations from './get_my_populations_reducer';
 import CoursesByPopulation from './get_courses_by_population_reducer';
+import DataInfinite from './get_infinite_data_reducer';
 
 const rootReducer = combineReducers({
     state: (state = {}) => state,
@@ -16,6 +17,7 @@ const rootReducer = combineReducers({
     logOutUser: LogOutUser,
     myPopulations: MyPopulations,
     coursesByPopulation: CoursesByPopulation,
+    dataInfinite: DataInfinite,
 });
 
 export default rootReducer;

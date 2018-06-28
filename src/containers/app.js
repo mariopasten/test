@@ -8,12 +8,15 @@ import {BrowserRouter as Router, Route, Link, Switch, Redirect} from 'react-rout
 import Header from './header';
 import Bye from './bye';
 import Landing from '../components/landing';
+import Footer from '../components/footer';
 import Login from './login';
 import Register from './register';
 import AllMyCourses from './allMyCourses';
 import MyCoursesContainer from './myCourses';
 import RedirectPage from '../components/redirectPage';
 import Container from '../components/container';
+import Infinite from './infinite';
+
 const createStoreWithMiddleware = applyMiddleware(promise)(createStore);
 
 class App extends Component {
@@ -27,10 +30,11 @@ class App extends Component {
                                 <Route path="/login" component={Login}/>
                                 <Route path="/register" component={Register}/>
                                 <Route path='/myCourses' component={AllMyCourses}/>
-                                <Route path='/ra' component={(RedirectPage) => window.location = 'https://www.mayahii.com/#!/RAs'}/>
+                                <Route path='/infinite' component={Infinite}/>
                                 <Route path="/landing" component={Landing}/>
                                 <Route path="/" component={Landing}/>
                             </Switch>
+                        <Footer />
                     </Container>
                 </Router>
             </div>

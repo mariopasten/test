@@ -26,6 +26,9 @@ import {getLogOut} from '../actions/index';
 const drawerWidth = 240;
 
 const styles = theme => ({
+    btnHome: {
+        padding: 0,
+    },
     btnUserMenu: {
         width: '100%',
     },
@@ -214,17 +217,19 @@ class Header extends React.Component {
                             </SwipeableDrawer>
                         </Hidden>
                         <div className={classes.navContainer}>
-                            <figure className={classes.imgHeaderContainer}>
-                                <img src="https://s3.amazonaws.com/mayahii-frontend/img/mayahiiLogoNew.png" alt="" className={classes.imgHeader}/>
-                            </figure>
+                            <Button className={classes.btnHome} component={Link} to={`/`}>
+                                <figure className={classes.imgHeaderContainer}>
+                                    <img src="https://s3.amazonaws.com/mayahii-frontend/img/mayahiiLogoNew.png" alt="" className={classes.imgHeader}/>
+                                </figure>
+                            </Button>
                             <Hidden smDown="smDown">
                                 <Tabs className={classes.navMenu}>
                                     {/* <Tab button="button" component={Link} to={`/landing`} className={classes.navItem} label="Inicio"/> */}
                                     <Tab className={classes.navItem} button="button" component={Link} to={`/myCourses`} label="Mis Cursos"/>
-                                    <Tab className={classes.navItem} button="button" component={Link} to={`/landing`} label="Recursos Abiertos"/>
+                                    <Tab className={classes.navItem} button="button" component={Link} to={`/infinite`} label="Infinite"/>
                                     {/* <Tab className={classes.navItem} label="Alianza"/>
                                     <Tab className={classes.navItem} label="Empresa"/> */}
-                                    <Tab className={classes.navItem} label="Universo Mayahii" aria-owns={anchorEl
+                                    {/* <Tab className={classes.navItem} label="Universo Mayahii" aria-owns={anchorEl
                                             ? 'simple-menu'
                                             : null} aria-haspopup="true" onClick={this.handleClick}/>
 
@@ -233,7 +238,7 @@ class Header extends React.Component {
                                         <MenuItem onClick={this.handleClose}><a href="https://www.mayahii.com/educadores" target="_blank">Mayahii Educadores</a></MenuItem>
                                         <MenuItem onClick={this.handleClose}><a href="https://www.mayahii.com/formacioncontinua" target="_blank">Mayahii Formación Continua</a></MenuItem>
                                         <MenuItem onClick={this.handleClose}><a href="https://www.mayahii.com/campusgoogle" target="_blank">Mayahii Campus Google</a></MenuItem>
-                                    </Menu>
+                                    </Menu> */}
                                 </Tabs>
                             </Hidden>
                             {
