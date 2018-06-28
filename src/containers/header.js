@@ -224,21 +224,8 @@ class Header extends React.Component {
                             </Button>
                             <Hidden smDown="smDown">
                                 <Tabs className={classes.navMenu}>
-                                    {/* <Tab button="button" component={Link} to={`/landing`} className={classes.navItem} label="Inicio"/> */}
                                     <Tab className={classes.navItem} button="button" component={Link} to={`/myCourses`} label="Mis Cursos"/>
                                     <Tab className={classes.navItem} button="button" component={Link} to={`/infinite`} label="Infinite"/>
-                                    {/* <Tab className={classes.navItem} label="Alianza"/>
-                                    <Tab className={classes.navItem} label="Empresa"/> */}
-                                    {/* <Tab className={classes.navItem} label="Universo Mayahii" aria-owns={anchorEl
-                                            ? 'simple-menu'
-                                            : null} aria-haspopup="true" onClick={this.handleClick}/>
-
-                                    <Menu id="simple-menu" anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={this.handleClose}>
-                                        <MenuItem onClick={this.handleClose}><a href="https://www.mayahii.com/catalogos/adminProductos.action" target="_blank">Academias</a></MenuItem>
-                                        <MenuItem onClick={this.handleClose}><a href="https://www.mayahii.com/educadores" target="_blank">Mayahii Educadores</a></MenuItem>
-                                        <MenuItem onClick={this.handleClose}><a href="https://www.mayahii.com/formacioncontinua" target="_blank">Mayahii Formación Continua</a></MenuItem>
-                                        <MenuItem onClick={this.handleClose}><a href="https://www.mayahii.com/campusgoogle" target="_blank">Mayahii Campus Google</a></MenuItem>
-                                    </Menu> */}
                                 </Tabs>
                             </Hidden>
                             {
@@ -264,6 +251,8 @@ class Header extends React.Component {
                                                 open={Boolean(userMenu)}
                                                 onClose={this.handleCloseUser}
                                             >
+                                                <MenuItem button="button" component={Link} to={`/myPortfolio`}>Mi Portafolio</MenuItem>
+                                                <MenuItem button="button" component={Link} to={`/myHistory`}>Mi Historial</MenuItem>
                                                 <MenuItem onClick={this.handleLogOut}>Logout</MenuItem>
                                             </Menu>
                                         </div>
