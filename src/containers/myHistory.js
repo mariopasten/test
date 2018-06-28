@@ -25,6 +25,7 @@ import {getCoursesByPopulation} from '../actions/index';
 import {getUserInSession} from '../actions/index';
 import {getMyPopulations} from '../actions/index';
 import {getMyCourses} from '../actions/index';
+import {getHistory} from '../actions/index';
 
 const styles = theme => ({
     avatar: {
@@ -78,9 +79,7 @@ class MyHistory extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            loadPopulations: false,
-            showCourses: false,
-            expanded: null,
+            loadHistory: false,
         };
     }
 
@@ -89,14 +88,14 @@ class MyHistory extends Component {
     }
 
 
-    // shouldComponentUpdate(nextProps, nextState){
-    //     if(nextProps.userInSession != null && nextProps.myPopulations == null && nextState.loadPopulations == false) {
-    //         this.props.getMyPopulations();
-    //         this.setState({loadPopulations: true});
-    //     }
-    //
-    //     return true;
-    // }
+    shouldComponentUpdate(nextProps, nextState){
+        if(nextProps.userInSession != null && nextProps.userHistory == null && nextState.loadHistory == false) {
+            this.props.getHistory();
+            this.setState({loadHistory: true});
+        }
+
+        return true;
+    }
 
     render() {
         const {classes, theme} = this.props;
@@ -114,10 +113,10 @@ class MyHistory extends Component {
     }
 }
 
-function mapStateToProps({userInSession}) {
-    return ({userInSession});
+function mapStateToProps({userInSession, userHistory}) {
+    return ({userInSession, userHistory});
 }
 
 export default withStyles(styles)(
- connect(mapStateToProps,{getUserInSession})(MyHistory)
+ connect(mapStateToProps,{getUserInSession, getHistory})(MyHistory)
 );

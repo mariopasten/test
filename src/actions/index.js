@@ -7,6 +7,8 @@ import {LOGOUT_USER} from '../constants/actionTypes';
 import {GET_MY_POPULATIONS} from '../constants/actionTypes';
 import {GET_COURSES_BY_POPULATION} from '../constants/actionTypes';
 import {GET_INFINITE_DATA} from '../constants/actionTypes';
+import {GET_USER_AWARDS_DATA} from '../constants/actionTypes';
+import {GET_HISTORY_DATA} from '../constants/actionTypes';
 
 const protocol = "https";
 const subDomainString = "www";
@@ -106,7 +108,7 @@ export function getCoursesByPopulation(uuid){
 }
 
 export function getInfinite(academy, academyOrigin, user, idTransmitter){
-    const request = axios.get(protocol+'://'+subDomainString+'.mayahii.com/panel/get_store_courses.action',{
+    const request = axios.get(protocol+'://'+subDomainString+'.mayahii.com/panel/get_store_courses',{
         params: {
             academy: academy,
             academyOrigin: academyOrigin,
@@ -119,6 +121,35 @@ export function getInfinite(academy, academyOrigin, user, idTransmitter){
     });
     return {
         type: "GET_INFINITE_DATA",
+        payload: request
+    }
+}
+
+export function getUserAwards(user, limit, page){
+    const request = axios.get(protocol+'://'+subDomainString+'.mayahii.com/track/user_awards',{
+        params: {
+            limit: 100,
+            user: user,
+            page: 0
+        },
+        withCredentials:true
+    });
+    return {
+        type: "GET_USER_AWARDS_DATA",
+        payload: request
+    }
+}
+
+export function getHistory(page){
+    const request = axios.get(protocol+'://'+subDomainString+'.mayahii.com/panel/show_history',{
+        params: {
+            paged: true,
+            page: page
+        },
+        withCredentials:true
+    });
+    return {
+        type: "GET_HISTORY_DATA",
         payload: request
     }
 }

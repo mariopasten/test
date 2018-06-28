@@ -21,10 +21,8 @@ import Login from './login';
 import Icon from '@material-ui/core/Icon';
 import IconButton from '@material-ui/core/IconButton';
 import StarsIcon from '@material-ui/icons/Stars';
-import {getCoursesByPopulation} from '../actions/index';
+import {getUserAwards} from '../actions/index';
 import {getUserInSession} from '../actions/index';
-import {getMyPopulations} from '../actions/index';
-import {getMyCourses} from '../actions/index';
 
 const styles = theme => ({
     avatar: {
@@ -78,9 +76,8 @@ class MyPortfolio extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            loadPopulations: false,
-            showCourses: false,
-            expanded: null,
+            loadAwards: false,
+
         };
     }
 
@@ -89,14 +86,14 @@ class MyPortfolio extends Component {
     }
 
 
-    // shouldComponentUpdate(nextProps, nextState){
-    //     if(nextProps.userInSession != null && nextProps.myPopulations == null && nextState.loadPopulations == false) {
-    //         this.props.getMyPopulations();
-    //         this.setState({loadPopulations: true});
-    //     }
-    //
-    //     return true;
-    // }
+    shouldComponentUpdate(nextProps, nextState){
+        if(nextProps.userInSession != null && nextProps.userawards == null && nextState.loadAwards == false) {
+            this.props.getUserAwards(nextProps.userInSession.usuario);
+            this.setState({loadAwards: true});
+        }
+
+        return true;
+    }
 
     render() {
         const {classes, theme} = this.props;
@@ -114,10 +111,10 @@ class MyPortfolio extends Component {
     }
 }
 
-function mapStateToProps({userInSession}) {
-    return ({userInSession});
+function mapStateToProps({userInSession, userawards}) {
+    return ({userInSession, userawards});
 }
 
 export default withStyles(styles)(
- connect(mapStateToProps,{getUserInSession})(MyPortfolio)
+ connect(mapStateToProps,{getUserInSession, getUserAwards})(MyPortfolio)
 );
