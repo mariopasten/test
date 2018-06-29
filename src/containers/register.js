@@ -56,7 +56,8 @@ const styles = theme => ({
             width: 1200,
             marginLeft: 'auto',
             marginRight: 'auto',
-            position: 'relative'
+            position: 'relative',
+            height: 700,
         }
     },
     registerDescription: {

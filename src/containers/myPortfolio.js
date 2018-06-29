@@ -20,26 +20,58 @@ import TableRow from '@material-ui/core/TableRow';
 import Login from './login';
 import Icon from '@material-ui/core/Icon';
 import IconButton from '@material-ui/core/IconButton';
-import StarsIcon from '@material-ui/icons/Stars';
 import {getUserAwards} from '../actions/index';
 import {getUserInSession} from '../actions/index';
 
 const styles = theme => ({
-    avatar: {
-        margin: 7,
+    awardContainer: {
+        width: '20%',
+        margin: '30px 2.5%',
         float: 'left',
-        border: '2px solid #E0E0E0',
+        height: 200,
+    },
+    awardImageCourse: {
+        width: '100%',
+        height: 'auto',
+        margin: 0,
+    },
+    awardImage: {
+        width: '100%',
+        height: '100%',
     },
     button: {
-        margin: theme.spacing.unit,
+        background: '#536DFE',
+        color: '#FFFFFF',
+        position: 'relative',
+        width: '80%',
+        margin: '0 10%',
+        top: '-50px',
+        '&:hover': {
+            background: '#536DFE',
+            color: '#FFFFFF',
+        },
+    },
+    buttonDisabled: {
+        background: '#B6C1FF',
+        color: '#FFFFFF',
+        position: 'relative',
+        width: '80%',
+        margin: '0 10%',
+        top: '-50px',
+        cursor: 'auto',
+        '&:hover': {
+            background: '#B6C1FF',
+            color: '#FFFFFF',
+        },
+    },
+    buttonText: {
+        marginTop: 3,
+        marginLeft: 10
     },
     courseName: {
+        color: '#536DFE',
+        top: '-25px',
         position: 'relative',
-        top: 16,
-    },
-    heading: {
-        fontSize: theme.typography.pxToRem(15),
-        fontWeight: theme.typography.fontWeightRegular,
     },
     navContainer: {
         '@media (min-width: 1280px)': {
@@ -50,27 +82,11 @@ const styles = theme => ({
             paddingTop: 65,
         }
     },
-    openNewLink: {
-        cursor: 'pointer',
-    },
     progress: {
-        marginLeft: '40%',
-        marginRight: '40%',
-        width: '20%',
         display: 'none',
-    },
-    root: {
-        width: '100%',
-        marginTop: theme.spacing.unit * 3,
-        overflowX: 'auto',
-    },
-    table: {
-        minWidth: 700,
     },
 });
 
-let uuidPrev = null;
-let renderCourses = [];
 
 class MyPortfolio extends Component {
     constructor(props) {
@@ -91,10 +107,11 @@ class MyPortfolio extends Component {
             this.props.getUserAwards(nextProps.userInSession.usuario);
             this.setState({loadAwards: true});
         }
-
         return true;
     }
-
+    showDegree(url) {
+        window.open(`${url}`, '_blank');
+    }
     render() {
         const {classes, theme} = this.props;
         const { expanded } = this.state;
@@ -102,10 +119,56 @@ class MyPortfolio extends Component {
         if (!this.props.userInSession) {
             return <CircularProgress className={classes.progress} size={100}/>
         }
+        {
+            !this.props.userInSession.usuario
+                ?
+                    render = <Login
+                                prevUrl="myPortfolio"
+                            />
+                :
+                    render = <div>
+                                <Typography variant="display2" gutterBottom align='left'>
+                                    Mi Portafolio
+                                </Typography>
+                                {
+                                    this.props.userawards != null && this.props.userawards.map(userAward => {
+                                        return(
+                                            <aside className={classes.awardContainer}>
+                                                <figure className={classes.awardImageCourse}>
+                                                    <img className={classes.awardImage} alt={userAward.courseName} src={userAward.imgBig} />
+                                                </figure>
+                                                {
+                                                    userAward.isDiploma
+                                                    ?
+                                                        <div>
+                                                            <Button onClick={() => this.showDegree(userAward.diplomaUrl)} variant="contained" className={classes.button}>
+                                                                <Icon>star_rate</Icon> <span className={classes.buttonText}>VER DIPLOMA</span>
+                                                            </Button>
+                                                            <Typography noWrap='true' className={classes.courseName} variant="subheading" gutterBottom align="center">
+                                                                {userAward.courseName}
+                                                            </Typography>
+                                                        </div>
+                                                    :
+                                                        <div>
+                                                            <Button variant="contained" className={classes.buttonDisabled}>
+                                                                <Icon>star_rate</Icon> <span className={classes.buttonText}>finalizado</span>
+                                                            </Button>
+                                                            <Typography noWrap='true' className={classes.courseName} variant="subheading" gutterBottom align="center">
+                                                                {userAward.courseName}
+                                                            </Typography>
+                                                        </div>
+                                                }
+
+                                            </aside>
+                                        )
+                                })}
+                            </div>
+
+        }
 
         return(
             <div className={classes.navContainer}>
-                <h1>My portfolio</h1>
+                {render}
             </div>
         );
     }
