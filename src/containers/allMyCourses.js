@@ -49,7 +49,7 @@ const styles = theme => ({
             marginLeft: '10%',
             marginRight: '10%',
             position: 'relative',
-            paddingTop: 65,
+            paddingTop: 75,
         }
     },
     openNewLink: {
@@ -141,6 +141,9 @@ class AllMyCourses extends Component {
                             />
                 :
                     render = <div>
+                                <Typography variant="display2" gutterBottom align='left'>
+                                    Mis Cursos
+                                </Typography>
                                 <ExpansionPanel expanded={expanded === 'myAutoCourses'} onChange={() => this.handleChangeExpansion('myAutoCourses', this.state.expanded)}>
                                     <ExpansionPanelSummary onClick={() => this.handleClickCoursesByPopulation("myAutoCourses")} expandIcon={<ExpandMoreIcon />}>
                                         <Typography className={classes.heading}>

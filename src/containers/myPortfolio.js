@@ -79,7 +79,7 @@ const styles = theme => ({
             marginLeft: '10%',
             marginRight: '10%',
             position: 'relative',
-            paddingTop: 65,
+            paddingTop: 75,
         }
     },
     progress: {

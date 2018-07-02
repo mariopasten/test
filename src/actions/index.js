@@ -9,6 +9,7 @@ import {GET_COURSES_BY_POPULATION} from '../constants/actionTypes';
 import {GET_INFINITE_DATA} from '../constants/actionTypes';
 import {GET_USER_AWARDS_DATA} from '../constants/actionTypes';
 import {GET_HISTORY_DATA} from '../constants/actionTypes';
+import {DELETE_VIDEO_HISTORY} from '../constants/actionTypes';
 
 const protocol = "https";
 const subDomainString = "www";
@@ -150,6 +151,19 @@ export function getHistory(page){
     });
     return {
         type: "GET_HISTORY_DATA",
+        payload: request
+    }
+}
+
+export function deleteVideoHistory(idVideo){
+    const request = axios.get(protocol+'://'+subDomainString+'.mayahii.com/panel/remove_object_history',{
+        params: {
+            select: idVideo,
+        },
+        withCredentials:true
+    });
+    return {
+        type: "DELETE_VIDEO_HISTORY",
         payload: request
     }
 }

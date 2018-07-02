@@ -251,8 +251,8 @@ class Header extends React.Component {
                                                 open={Boolean(userMenu)}
                                                 onClose={this.handleCloseUser}
                                             >
-                                                <MenuItem button="button" component={Link} to={`/myPortfolio`}>Mi Portafolio</MenuItem>
-                                                <MenuItem button="button" component={Link} to={`/myHistory`}>Mi Historial</MenuItem>
+                                                <MenuItem onClick={this.handleCloseUser} button="button" component={Link} to={`/myPortfolio`}>Mi Portafolio</MenuItem>
+                                                <MenuItem onClick={this.handleCloseUser} button="button" component={Link} to={`/myHistory`}>Mi Historial</MenuItem>
                                                 <MenuItem onClick={this.handleLogOut}>Logout</MenuItem>
                                             </Menu>
                                         </div>
