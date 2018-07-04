@@ -8,6 +8,12 @@ import {getUserInSession} from '../actions/index';
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import Visibility from '@material-ui/icons/Visibility';
+import VisibilityOff from '@material-ui/icons/VisibilityOff';
+import Input from '@material-ui/core/Input';
+import IconButton from '@material-ui/core/IconButton';
+import InputLabel from '@material-ui/core/InputLabel';
+import InputAdornment from '@material-ui/core/InputAdornment';
 import {Link} from 'react-router-dom';
 import {getLogin} from '../actions/index';
 
@@ -16,6 +22,7 @@ const styles = theme => ({
         width: '40%',
         marginLeft: '30%',
         marginRight: '30%',
+        top: 15,
     },
     descriptionRegisterContainer: {
         width: '40%',
@@ -87,10 +94,12 @@ class Login extends Component {
             userEmail: '',
             userPassword: '',
             statusLogin: '',
+            showPassword: false,
         };
         this.handleUserChange = this.handleUserChange.bind(this);
         this.handlePasswordChange = this.handlePasswordChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleClickShowPassword = this.handleClickShowPassword.bind(this);
     }
 
     handleUserChange(event) {
@@ -100,6 +109,10 @@ class Login extends Component {
     handlePasswordChange(event) {
         this.setState({userPassword: event.target.value});
     }
+
+    handleClickShowPassword() {
+        this.setState(state => ({ showPassword: !state.showPassword }));
+    };
 
     handleSubmit(event) {
         event.preventDefault();
@@ -162,13 +175,32 @@ class Login extends Component {
                                           value={this.state.userEmail}
                                           onChange={this.handleUserChange}
                                         />
-                                        <TextField
+                                        {/* <TextField
                                             label="Contraseña"
                                             className={classes.textField}
                                             margin="normal"
                                             type= "password"
                                             value={this.state.userPassword}
                                             onChange={this.handlePasswordChange}
+                                        /> */}
+                                        <InputLabel htmlFor="adornment-password">Password</InputLabel>
+                                        <Input
+                                            className={classes.textField}
+                                            id="adornment-password"
+                                            type={this.state.showPassword ? 'text' : 'password'}
+                                            value={this.state.userPassword}
+                                            onChange={this.handlePasswordChange}
+                                            endAdornment={
+                                              <InputAdornment position="end">
+                                                <IconButton
+                                                  aria-label="Toggle password visibility"
+                                                  onClick={this.handleClickShowPassword}
+                                                  onMouseDown={this.handleMouseDownPassword}
+                                                >
+                                                  {this.state.showPassword ? <VisibilityOff /> : <Visibility />}
+                                                </IconButton>
+                                              </InputAdornment>
+                                            }
                                         />
                                         <Button
                                             raised

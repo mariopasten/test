@@ -17,7 +17,7 @@ const url = 'url';
 
 const styles = theme => ({
     banner: {
-        background: `${url}('https://s3.amazonaws.com/mayahii-frontend/img/landingBannerN.png')`,
+        background: `${url}('https://s3.amazonaws.com/mayahii-frontend/img/landing_fondo.png')`,
         backgroundRepeat: 'no-repeat',
         backgroundPositionX: 'center',
         backgroundPositionY: 'top',
@@ -329,7 +329,7 @@ class Login extends Component {
                     <Toolbar>
                         <Tabs className={classes.navMenu}>
                             <Tab className={classes.navItem} button="button" href={`http://formacioncontinua.mayahii.com/`} label="FORMACIÓN DOCENTE"/>
-                            <Tab className={classes.navItem} button="button" href={`https://www.mayahii.com/catalogos/adminProductos.action`} label="CREA TU ACADEMIA"/>
+                            <Tab className={classes.navItem} button="button" href={`https://www.mayahii.com/#!/academy`} label="CREA TU ACADEMIA"/>
                             <Tab className={classes.navItem} label="Universo Mayahii" aria-owns={anchorEl
                                     ? 'simple-menu'
                                     : null} aria-haspopup="true" onClick={this.handleClick}/>

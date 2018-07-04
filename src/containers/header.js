@@ -225,7 +225,7 @@ class Header extends React.Component {
                             <Hidden smDown="smDown">
                                 <Tabs className={classes.navMenu}>
                                     <Tab className={classes.navItem} button="button" component={Link} to={`/myCourses`} label="Mis Cursos"/>
-                                    <Tab className={classes.navItem} button="button" component={Link} to={`/infinite`} label="Infinite"/>
+                                    <Tab className={classes.navItem} button="button" component="a" href="https://www.mayahii.com/#!/infinite" label="Infinite"/>
                                 </Tabs>
                             </Hidden>
                             {
