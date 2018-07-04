@@ -10,6 +10,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import {Link} from 'react-router-dom';
+import Icon from '@material-ui/core/Icon';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 const url = 'url';
@@ -29,10 +30,86 @@ const styles = theme => ({
         backgroundSize: 'cover',
         position: 'relative',
     },
+    bannerLink: {
+        width: '50%',
+        background: '#FFFFFF',
+        position: 'absolute',
+        paddingLeft: '10%',
+        zIndex: 9999,
+    },
+    bannerLinkIcon: {
+        float: 'right',
+        background: '#536DFE',
+        borderRadius: '50%',
+        padding: 2,
+        color: '#FFFFFF',
+        marginRight: 50,
+        marginTop: 30,
+    },
+    bannerLinkImage: {
+        width: '100%',
+        height: '100%',
+    },
+    bannerLinkImageContainer: {
+        width: '20%',
+        height: 'auto',
+        margin: 0,
+        float: 'left',
+    },
     bookImageContainer: {
         width: '90%',
         height: 'auto',
         marginRight: '10%',
+    },
+    bannerLinkText: {
+        fontSize: 15,
+        color: '#4A4A4A',
+    },
+    bannerLinkSubText: {
+        marginTop: 20,
+        fontSize: 17,
+        color: '#4A4A4A',
+        textDecoration: 'underline',
+    },
+    bannerLinkTextcontainer: {
+        marginLeft: 50,
+        float: 'left',
+        marginTop: 10,
+        fontSize: 13,
+        color: '#4A4A4A',
+    },
+    descriptionProductContainer: {
+        width: '40%',
+        float: 'left',
+    },
+    descriptionTitle: {
+        color: '#4A4A4A',
+        fontSize: 18,
+        fontWeight: 'bold',
+        letterSpacing: '2px',
+    },
+    descriptionSubText: {
+        margin: '45px 0',
+    },
+    descriptionText: {
+        fontSize: 14,
+        color: '#4A4A4A',
+        marginBottom: 20,
+
+    },
+    externalLink: {
+        textDecoration: 'none',
+        color: '#536DFE',
+        fontSize: 14,
+    },
+    externalLinkIcon: {
+        position: 'relative',
+        top: 6,
+        marginLeft: 20,
+        color: '#FFFFFF',
+        borderRadius: '50%',
+        background: '#536DFE',
+        padding: 2,
     },
     titleProductContainer: {
         width: '60%'
@@ -98,16 +175,9 @@ const styles = theme => ({
         marginRight: '22%',
         color: '#FFFFFF',
     },
-    // productContainer: {
-    //     width: '20%',
-    //     float: 'left',
-    //     marginTop: 25,
-    //     marginLeft: '2.5%',
-    //     marginRight: '2.5%',
-    // },
     productContainer: {
         width: '100%',
-        minHeight: 300,
+        minHeight: 230,
     },
     productsContainer: {
         width: '100%',
@@ -123,8 +193,15 @@ const styles = theme => ({
         height: 'auto',
     },
     productImageContainer: {
-        width: '100%',
-        margin: 0
+        width: '60%',
+        margin: 0,
+        paddingBottom: 50,
+    },
+    productImageSecondContainer: {
+        width: '130%',
+        paddingBottom: 50,
+        marginLeft: '-90px',
+        marginTop: 50,
     },
     productLink: {
         textDecoration: 'none',
@@ -132,6 +209,9 @@ const styles = theme => ({
     productLinkText: {
         color: '#009688',
         marginTop: '4em',
+    },
+    sectionColor: {
+        background: '#FFEBEE',
     },
     servicesContainer: {
         width: '100%',
@@ -161,27 +241,41 @@ const styles = theme => ({
         background: '#243640',
     },
     subTitle: {
-        width: '50%',
+        width: '75%',
+        color: '#455A64',
+        lineHeight: '62px',
+        fontWeight: 'bold',
     },
     textBanner: {
         color: '#ffffff',
         paddingTop: 10,
+        fontSize: '1.5em',
         '@media (min-width: 960px)': {
             marginLeft: 0,
         },
+    },
+    textBannerContainer: {
+        position: 'relative',
+        top: 150,
     },
     subTextBanner: {
         color: '#ffffff',
         paddingTop: 10,
         width: '60%',
-        lineHeight: 2,
+        lineHeight: '25px',
+        fontSize: '1.125em',
+        fontWeight: 'lighter',
         '@media (min-width: 960px)': {
             marginLeft: 0,
         },
     },
     titleProductContainer: {
-        width: '40%',
+        width: '50%',
         float: 'left',
+    },
+    titleSection: {
+        color: '#455A64',
+        fontWeight: 'initial',
     },
     toolContainer: {
         width: '25%',
@@ -207,128 +301,6 @@ const styles = theme => ({
     }
 
 });
-
-// const includedServices = [
-//     {
-//         title: 'Centro de ayuda',
-//         description: 'Contamos con un equipo dedicado a resolver tus dudas y darle seguimiento a problemas técnicos, también ponemos una serie de Preguntas Frecuentes que resuelven problemas comúnes.',
-//         img:'https://s3.amazonaws.com/mayahii-frontend/img/centro-ayuda.png'
-//     },
-//     {
-//         title: 'Estadística y Analítica',
-//         description: 'Ya sea que tengas Academias, Poblaciones o ambos operando en Mayahii, siempre tendrás a la mano un panel de estadística y analítica que te permitirá ver tus estadísticas de interés.',
-//         img:'https://s3.amazonaws.com/mayahii-frontend/img/datos.png'
-//     },
-//     {
-//         title: 'Portafolio del usuario',
-//         description: 'Cada usuario Mayahii tiene su portafolio personal siempre actualizado, donde se detallan los cursos que ha terminado históricamente.',
-//         img:'https://s3.amazonaws.com/mayahii-frontend/img/diplomaNuevo.png'
-//     },
-// ];
-//
-// const services = [
-//     {
-//         title: 'Arquitectura y Diseño Académico',
-//         description: 'Diagnósticamos y analisamos las necesidades de su organización, para ayudarle a desarrollar un plan curricular e instruccional.',
-//         img:'https://s3.amazonaws.com/mayahii-frontend/img/Fservice.png'
-//     },
-//     {
-//         title: 'Producción de Cursos y Contenidos Educativos',
-//         description: 'Crea contenido y compártelo con el mundo, con un grupo selecto o cobra por el contenido, conoce más en nuestro sitio.',
-//         img:'https://s3.amazonaws.com/mayahii-frontend/img/Sserivice.png'
-//     },
-//     {
-//         title: 'Operación de Proyectos Educativos',
-//         description: 'Crea contenido y compártelo con el mundo, con un grupo selecto o cobra por el contenido, conoce más en nuestro sitio.',
-//         img:'https://s3.amazonaws.com/mayahii-frontend/img/Tservice.png'
-//     },
-// ];
-// const products = [
-//     {
-//         title: 'ACADEMIAS',
-//         description: 'Crea contenido y compártelo con el mundo, con un grupo selecto o cobra por el contenido, conoce más en nuestro sitio.',
-//         img: 'https://s3.amazonaws.com/mayahii-frontend/img/academiesLanding.png',
-//         link: 'http://www.mayahii.com/catalogos/adminProductos.action',
-//     },
-//     {
-//         title: 'CAMPUS EDUCADORES',
-//         description: 'Actualízate como educador, encuentra cursos de actualidad y aprende sobre la era digital.',
-//         img: 'https://s3.amazonaws.com/mayahii-frontend/img/eduLanding.png',
-//         link: 'http://educadores.mayahii.com/',
-//     },
-//     {
-//         title: 'FORMACIÓN CONTINUA',
-//         description: 'Para docentes de educación básica, aquí encontrarás cursos oficiales para seguir desarrollándote en tu profesión.',
-//         img: 'https://s3.amazonaws.com/mayahii-frontend/img/educationLanding.png',
-//         link: 'http://formacioncontinua.mayahii.com/',
-//     },
-//     {
-//         title: 'INFINITE',
-//         description: 'Crea contenido y compártelo con el mundo, con un grupo selecto o cobra por el contenido, conoce más en nuestro sitio.',
-//         img: 'https://s3.amazonaws.com/mayahii-frontend/img/infiniteLanding.png',
-//         link: 'http://www.mayahii.com/#!/infinite',
-//     }
-// ];
-//
-// const users = [
-//     {
-//         img:'https://s3.amazonaws.com/mayahii-frontend/img/maestro.png',
-//         type: 'Educadores e instructores'
-//     },
-//     {
-//         img:'https://s3.amazonaws.com/mayahii-frontend/img/alumno.png',
-//         type: 'Alumnos y público en general'
-//     },
-//     {
-//         img:'https://s3.amazonaws.com/mayahii-frontend/img/instituto.png',
-//         type: 'Instituciones'
-//     },
-//     {
-//         img:'https://s3.amazonaws.com/mayahii-frontend/img/negocio.png',
-//         type: 'Organizaciones y emperesas'
-//     }
-// ];
-//
-// const tools = [
-//     {
-//         img:'https://s3.amazonaws.com/mayahii-frontend/img/analisis.png',
-//         type: 'Análisis y bases de datos'
-//     },
-//     {
-//         img:'https://s3.amazonaws.com/mayahii-frontend/img/reporte.png',
-//         type: 'Reportes de avances curriculares'
-//     },
-//     {
-//         img:'https://s3.amazonaws.com/mayahii-frontend/img/diplomaNuevo.png',
-//         type: 'Portafolio de usuario'
-//     },
-//     {
-//         img:'https://s3.amazonaws.com/mayahii-frontend/img/seguimiento_usuario.png',
-//         type: 'Seguimiento personalizado de usuarios'
-//     }
-// ];
-
-const products = [
-    {
-        title: 'Evaluación docente',
-        subTitle: 'Formación Docente',
-        descriptionTitle: 'Sigue desarrollándote',
-        description: 'Para docentes de educación básica, aquí encontrarás cursos oficiales para seguir desarrollándote en tu profesión. Somos una Instancia Formadora con reconocimiento oficial de la Dirección General de Formación Continua, Actualización y Desarrollo Profesional de Maestros de Educación Básica de la Secretaría de Educación Pública.',
-        link: 'http://formacioncontinua.mayahii.com/',
-        hasTitle: true,
-        hasImage: false,
-    },
-    {
-        title: 'Enseña sin límites',
-        subTitle: 'Crea tu Academia',
-        descriptionTitle: 'Crea contenido y compártelo con el mundo, con un grupo selecto o cobra por el contenido, conoce más en nuestro sitio.',
-        description: 'Una Academia Mayahii es tu campus en línea disponible en minutos.  Consiste en una suite de herramientas web especialmente diseñadas para la enseñanza y el aprendizaje sobre demanda, sin límite de usuarios, sin límite de cursos, con tu imagen de marca y con accesibilidad desde cualquier lugar y cualquier dispositivo.',
-        link: 'https://www.mayahii.com/catalogos/adminProductos.action',
-        hasTitle: false,
-        hasImage: true,
-        image: 'https://s3.amazonaws.com/mayahii-frontend/img/libro_abierto.png',
-    },
-];
 
 class Login extends Component {
     constructor(props) {
@@ -370,322 +342,162 @@ class Login extends Component {
                     </Toolbar>
                 </AppBar>
                 <aside className={classes.banner}>
+                    <a className={classes.bannerLink} href="/myCourses">
+                        <figure className={classes.bannerLinkImageContainer}>
+                            <img className={classes.bannerLinkImage} src="https://s3.amazonaws.com/mayahii-frontend/img/search-label.png" alt=""/>
+                        </figure>
+                        <aside className={classes.bannerLinkTextcontainer}>
+                            <Typography className={classes.bannerLinkText} variant="headline" gutterBottom align="left">
+                                ¿Estás buscando tus cursos?
+                            </Typography>
+                            <Typography className={classes.bannerLinkSubText} variant="headline" gutterBottom align="left">
+                                Encuentralos aquí
+                            </Typography>
+                        </aside>
+                        <Icon className={classes.bannerLinkIcon}>arrow_forward</Icon>
+                    </a>
                     <div className={classes.navContainer}>
-                        <Typography className={classes.textBanner} variant="display1" gutterBottom align="left">
-                            Enseñanza de calidad.
-                        </Typography>
-                        <Typography className={classes.textBanner} variant="display1" gutterBottom align="left">
-                            Aprendizaje ideal.
-                        </Typography>
-                        <Typography className={classes.textBanner} variant="display1" gutterBottom align="left">
-                            Capacitación sin límites.
-                        </Typography>
-                        <Typography className={classes.subTextBanner} variant="Subheading" gutterBottom align="left">
-                            Mayahii es una plataforma
-                            de educación y transformación
-                            digital. En Mayahii nos dedicamos
-                            a resolver los problemas de la
-                            educación del Siglo XXI a través
-                            de una plataforma que permite educar
-                            de manera pública y privada a un gran
-                            número de alumnos.
-                        </Typography>
+                        <section className={classes.textBannerContainer}>
+                            <Typography className={classes.textBanner} variant="display1" align="left">
+                                Enseñanza de calidad.
+                            </Typography>
+                            <Typography className={classes.textBanner} variant="display1" align="left">
+                                Aprendizaje ideal.
+                            </Typography>
+                            <Typography className={classes.textBanner} variant="display1" align="left">
+                                Capacitación sin límites.
+                            </Typography>
+                            <Typography className={classes.subTextBanner} variant="Subheading" gutterBottom align="left">
+                                Mayahii es una plataforma
+                                de educación y transformación
+                                digital. En Mayahii nos dedicamos
+                                a resolver los problemas de la
+                                educación del Siglo XXI a través
+                                de una plataforma que permite educar
+                                de manera pública y privada a un gran
+                                número de alumnos.
+                            </Typography>
+                        </section>
                     </div>
                 </aside>
                 <div className={classes.navContainer}>
                     <section className={classes.mayahiiDescriptionContainer}>
-                        {
-                            products.map(product =>(
-                                <div className={classes.productContainer}>
-                                    <aside className={classes.titleProductContainer}>
-                                        <Typography variant="headline" gutterBottom align="left">
-                                            {product.title}
-                                        </Typography>
-                                        <Typography className={classes.subTitle} variant="display3" gutterBottom align="left">
-                                            {product.subTitle}
-                                        </Typography>
-                                        {
-                                            product.hasImage
-                                            ?
-                                                <figure className={classes.productImageContainer}>
-                                                    <img src={product.image} alt="" className={classes.productImage}  />
-                                                </figure>
-                                            :
-                                                ""
-                                        }
-                                    </aside>
-                                    <section className={classes.descriptionProductContainer}>
-                                        {
-                                            product.hasTitle
-                                            ?
-                                                <div>
-                                                    <Typography variant="headline" gutterBottom align="left">
-                                                        {product.descriptionTitle}
-                                                    </Typography>
-                                                    <Typography variant="body2" gutterBottom align="left">
-                                                        {product.description}
-                                                    </Typography>
-                                                </div>
-                                            :
-                                                <div>
-                                                    <Typography variant="body2" gutterBottom align="left">
-                                                        {product.descriptionTitle}
-                                                    </Typography>
-                                                    <Typography variant="body2" gutterBottom align="left">
-                                                        {product.description}
-                                                    </Typography>
-                                                </div>
-                                        }
-                                    </section>
+                        <div className={classes.productContainer}>
+                            <aside className={classes.titleProductContainer}>
+                                <Typography className={classes.titleSection} variant="headline" gutterBottom align="left">
+                                    Evaluación docente
+                                </Typography>
+                                <Typography className={classes.subTitle} variant="display3" gutterBottom align="left">
+                                    Formación Docente
+                                </Typography>
+                            </aside>
+                            <section className={classes.descriptionProductContainer}>
+                                <div>
+                                    <Typography className={classes.descriptionTitle} variant="headline" gutterBottom align="left">
+                                        SIGUE DESARROLLÁNDOTE
+                                    </Typography>
+                                    <Typography className={classes.descriptionText} variant="headline" gutterBottom align="left">
+                                        Para docentes de educación básica, aquí encontrarás cursos oficiales para seguir desarrollándote en tu profesión. Somos una Instancia Formadora con reconocimiento oficial de la Dirección General de Formación Continua, Actualización y Desarrollo Profesional de Maestros de Educación Básica de la Secretaría de Educación Pública.
+                                    </Typography>
+                                    <a href="http://formacioncontinua.mayahii.com/" className={classes.externalLink}>
+                                        VISITAR FORMACIÓN CONTINUA  <Icon className={classes.externalLinkIcon}>arrow_forward</Icon>
+                                    </a>
                                 </div>
-                                // <aside className={classes.productContainer}>
-                                //     <Typography variant="subheading" gutterBottom align="center">
-                                //         {product.title}
-                                //     </Typography>
-                                //     <Typography className={classes.productDescription} variant="body1" gutterBottom align="center">
-                                //         {product.description}
-                                //     </Typography>
-                                //     <figure className={classes.productImageContainer}>
-                                //         <img src={product.img} alt="" className={classes.productImage}  />
-                                //     </figure>
-                                //     <a href={product.link} target="_blank" className={classes.productLink}>
-                                //         <Typography className={classes.productLinkText} variant="body1" gutterBottom align="center">
-                                //             VISITA <br></br>{product.title}
-                                //         </Typography>
-                                //     </a>
-                                // </aside>
-                            ))
-                        }
+                            </section>
+                        </div>
                     </section>
                 </div>
-                {/* <div className={classes.navContainer}>
-                    <section className={classes.mayahiiDescriptionContainer}>
-                        <aside className={classes.mayahiiDescriptionF}>
-                            <figure className={classes.spaceImageContainer}>
-                                <img src="https://s3.amazonaws.com/mayahii-frontend/img/libro_abierto.png" alt="" className={classes.spaceImage} />
-                            </figure>
-                        </aside>
-                        <aside className={classes.mayahiiDescriptionF}>
-                            <Typography className={classes.mayahiiDescriptionTitleSection} variant="headline" gutterBottom align="left">
-                                Experiencia educativa
-                                completa y moderna
-                            </Typography>
-                            <Typography className={classes.mayahiiDescriptionText} variant="subheading" gutterBottom align="left">
-                                Lleva tu centro de formación
-                                al siguiente nivel con la
-                                experiencia educativa que
-                                ofrecemos en Mayahii. Combina
-                                una moderna aula virtual
-                                con ejercicios interactivos,
-                                presentaciones, foros de
-                                discusión y cualquier otro
-                                tipo de material adicional
-                                que gustes.
-                            </Typography>
-                        </aside>
-                    </section>
-                    <section className={classes.mayahiiDescriptionContainer}>
-                        <Typography className={classes.mayahiiDescriptionTitle} variant="headline" gutterBottom align="left">
-                            Mayahii Plataforma de Enseñanza
-                            y Aprendizaje
-                        </Typography>
-                        <Typography className={classes.mayahiiDescriptionSubTitle} variant="subheading" gutterBottom align="left">
-                            Contamos con una infraestructura
-                            digital que permite crear contenido
-                            en línea sin límite de usuarios y
-                            con la posibilidad de segmentarse
-                            en audiencias.
-                        </Typography>
-                        <div className={classes.productsContainer}>
-                            {
-                                products.map(product =>(
-                                    <aside className={classes.productContainer}>
-                                        <Typography variant="subheading" gutterBottom align="center">
-                                            {product.title}
+                <div className={classes.sectionColor}>
+                    <div className={classes.navContainer}>
+                        <section className={classes.mayahiiDescriptionContainer}>
+                            <div className={classes.productContainer}>
+                                <aside className={classes.titleProductContainer}>
+                                    <Typography className={classes.titleSection} variant="headline" gutterBottom align="left">
+                                        Enseña sin límites
+                                    </Typography>
+                                    <Typography className={classes.subTitle} variant="display3" gutterBottom align="left">
+                                        Crea tu Academia
+                                    </Typography>
+                                    <figure className={classes.productImageContainer}>
+                                        <img src='https://s3.amazonaws.com/mayahii-frontend/img/landingFN.png' alt="" className={classes.productImage}  />
+                                    </figure>
+                                </aside>
+                                <section className={classes.descriptionProductContainer}>
+                                    <div>
+                                        <Typography className={classes.descriptionText} variant="headline" gutterBottom align="left">
+                                            Crea contenido y compártelo con el mundo, con un grupo selecto o cobra por el contenido, conoce más en nuestro sitio.
                                         </Typography>
-                                        <Typography className={classes.productDescription} variant="body1" gutterBottom align="center">
-                                            {product.description}
+                                        <Typography className={classes.descriptionText} variant="headline" gutterBottom align="left">
+                                            Una Academia Mayahii es tu campus en línea disponible en minutos.  Consiste en una suite de herramientas web especialmente diseñadas para la enseñanza y el aprendizaje sobre demanda, sin límite de usuarios, sin límite de cursos, con tu imagen de marca y con accesibilidad desde cualquier lugar y cualquier dispositivo.
                                         </Typography>
-                                        <figure className={classes.productImageContainer}>
-                                            <img src={product.img} alt="" className={classes.productImage}  />
-                                        </figure>
-                                        <a href={product.link} target="_blank" className={classes.productLink}>
-                                            <Typography className={classes.productLinkText} variant="body1" gutterBottom align="center">
-                                                VISITA <br></br>{product.title}
-                                            </Typography>
+                                        <a href="https://www.mayahii.com/catalogos/adminProductos.action" className={classes.externalLink}>
+                                            VISITAR ACADEMIAS  <Icon className={classes.externalLinkIcon}>arrow_forward</Icon>
                                         </a>
-                                    </aside>
-                                ))
-                            }
+                                    </div>
+                                </section>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+                <div className={classes.navContainer}>
+                    <section className={classes.mayahiiDescriptionContainer}>
+                        <div className={classes.productContainer}>
+                            <aside className={classes.titleProductContainer}>
+                                <Typography variant="headline" gutterBottom align="left">
+                                    Capacita tu empresa
+                                </Typography>
+                                <Typography className={classes.subTitle} variant="display3" gutterBottom align="left">
+                                    Universidades Corporativas
+                                </Typography>
+                            </aside>
+                            <section className={classes.descriptionProductContainer}>
+                                <div>
+                                    <Typography className={classes.descriptionText} variant="headline" gutterBottom align="left">
+                                        Si tu organización posee múltiples academias, puede crear una Universidad Corporativa con Mayahii, con solo unos cuantos clicks.
+                                    </Typography>
+                                    <Typography className={classes.descriptionText} variant="headline" gutterBottom align="left">
+                                        Brinda a tus usuarios acceso a todos los contenidos y academias de tu organización en un solo lugar, con una experiencia de usuario intuitiva y plenamente integrada.
+                                    </Typography>
+                                    <figure className={classes.productImageSecondContainer}>
+                                        <img src='https://s3.amazonaws.com/mayahii-frontend/img/universidadesImage.png' alt="" className={classes.productImage}  />
+                                    </figure>
+                                </div>
+                            </section>
                         </div>
                     </section>
-                    <section className={classes.mayahiiDescriptionContainer}>
-                        <Typography className={classes.mayahiiDescriptionTitle} variant="headline" gutterBottom align="left">
-                            Mayahii Servicios de Acompañamiento
-                            Académico y Producción Educativa
-                        </Typography>
-                        <Typography className={classes.mayahiiDescriptionSubTitle} variant="subheading" gutterBottom align="left">
-                            También contamos con servicios de
-                            consultoría educativa y desarrollo
-                            de material educativo, si está
-                            interesado en conocer más a detalle
-                            estos servicios mándanos un correo.
-                        </Typography>
-                        <div className={classes.servicesContainer}>
-                            {
-                                services.map(service =>(
-                                    <aside className={classes.serviceContainer}>
-                                        <Typography className={classes.serviceTitle} variant="subheading" gutterBottom align="center">
-                                            {service.title}
+                </div>
+                <div className={classes.sectionColor}>
+                    <div className={classes.navContainer}>
+                        <section className={classes.mayahiiDescriptionContainer}>
+                            <div className={classes.productContainer}>
+                                <aside className={classes.titleProductContainer}>
+                                    <Typography variant="headline" gutterBottom align="left">
+                                        Producción de material
+                                    </Typography>
+                                    <Typography className={classes.subTitle} variant="display3" gutterBottom align="left">
+                                        PLANEACIÓN Y PRODUCCIÓN EDUCATIVA
+                                    </Typography>
+                                    <figure className={classes.productImageContainer}>
+                                        <img src='https://s3.amazonaws.com/mayahii-frontend/img/landingTN.png' alt="" className={classes.productImage}  />
+                                    </figure>
+                                </aside>
+                                <section className={classes.descriptionProductContainer}>
+                                    <div>
+                                        <Typography className={classes.descriptionText} variant="headline" gutterBottom align="left">
+                                            Nuestros servicios de producción de contenidos educativos habilitarán a su organización con la capacidad de proveer a sus usuarios cursos y entrenamiento de clase mundial, desarrollado con las técnicas pedagógicas y audiovisuales más actuales.
                                         </Typography>
-                                        <Typography className={classes.productDescription} variant="body1" gutterBottom align="center">
-                                            {service.description}
+                                        <Typography className={classes.descriptionSubText} variant="title" gutterBottom align="left">
+                                            ¿Necesitas capacitar o instruir pero no tienes contenido?
                                         </Typography>
-                                        <figure className={classes.productImageContainer}>
-                                            <img src={service.img} alt="" className={classes.productImage}  />
-                                        </figure>
-                                    </aside>
-                                ))
-                            }
-                        </div>
-                    </section>
-                    <section className={classes.mayahiiDescriptionContainer}>
-                        <Typography className={classes.mayahiiDescriptionTitle} variant="headline" gutterBottom align="left">
-                            ¿Quién usa Mayahii?
-                        </Typography>
-                        <Typography className={classes.mayahiiDescriptionSubTitle} variant="subheading" gutterBottom align="left">
-                            Nuestra plataforma puede ser
-                            usada por cualquiera, no
-                            importa el tamaño de tu organización
-                            o de tu reto educativo, contamos con
-                            la infraestructura y el personal
-                            para ayudarte a superar cualquier
-                            desafío.
-                        </Typography>
-                        <div className={classes.servicesContainer}>
-                            {
-                                users.map(user =>(
-                                    <aside className={classes.productContainer}>
-                                        <figure className={classes.productImageContainer}>
-                                            <img src={user.img} alt="" className={classes.productImage}  />
-                                        </figure>
-                                        <Typography className={classes.userType} variant="subheading" gutterBottom align="center">
-                                            {user.type}
+                                        <Typography className={classes.descriptionText} variant="headline" gutterBottom align="left">
+                                            Te ayudamos a configurar un plan académico para tu audiencia y a crear contenido original o bien usar material de nuestra vasta red de lecciones y academias.
                                         </Typography>
-                                    </aside>
-                                ))
-                            }
-                        </div>
-                    </section>
-                    <section className={classes.mayahiiDescriptionContainer}>
-                        <aside className={classes.mayahiiDescriptionF}>
-                            <figure className={classes.spaceImageContainer}>
-                                <img src="https://s3.amazonaws.com/mayahii-frontend/img/userTablet.png" alt="" className={classes.spaceImage} />
-                            </figure>
-                        </aside>
-                        <aside className={classes.mayahiiDescriptionF}>
-                            <Typography className={classes.mayahiiDescriptionTitleSection} variant="headline" gutterBottom align="left">
-                                ¿Necesitas capacitar o instruir
-                                pero no tienes contenido?
-                            </Typography>
-                            <Typography className={classes.mayahiiDescriptionText} variant="subheading" gutterBottom align="left">
-                                Te ayudamos a configurar un plan
-                                académico para tu audiencia y a
-                                crear contenido original o bien
-                                usar material de nuestra vasta
-                                red de lecciones y academias.
-                            </Typography>
-                        </aside>
-                    </section>
-                    <section className={classes.mayahiiDescriptionContainer}>
-                        <Typography className={classes.mayahiiDescriptionTitle} variant="headline" gutterBottom align="left">
-                            Herramientas de vanguardia
-                            para administradores de cursos
-                        </Typography>
-                        <Typography className={classes.mayahiiDescriptionSubTitle} variant="subheading" gutterBottom align="left">
-                            Estos son algunos de nuestros
-                            clientes y alianzas a las que
-                            Mayahii ha ayudado a superar
-                            grandes retos educativos y de formación.
-                        </Typography>
-                        <div className={classes.servicesContainer}>
-                            {
-                                tools.map(tool =>(
-                                    <aside className={classes.toolContainer}>
-                                        <figure className={classes.toolContainerImage}>
-                                            <img src={tool.img} alt="" className={classes.toolImage}  />
-                                        </figure>
-                                        <Typography className={classes.toolType} variant="subheading" gutterBottom align="center">
-                                            {tool.type}
-                                        </Typography>
-                                    </aside>
-                                ))
-                            }
-                        </div>
-                    </section>
-                    <section className={classes.mayahiiDescriptionContainer}>
-                        <Typography className={classes.mayahiiDescriptionTitle} variant="headline" gutterBottom align="left">
-                            Servicios siempre incluidos
-                        </Typography>
-                        <Typography className={classes.mayahiiDescriptionSubTitle} variant="subheading" gutterBottom align="left">
-                            Porqué el servicio y satisfacción
-                            de nuestros clientes nos importa
-                            Mayahii pone a su disposición los
-                            siguientes servicios en cualquiera
-                            de sus planes:
-                        </Typography>
-                        <div className={classes.servicesContainer}>
-                            {
-                                includedServices.map(includedService =>(
-                                    <aside className={classes.serviceContainer}>
-                                        <Typography className={classes.serviceTitle} variant="subheading" gutterBottom align="center">
-                                            {includedService.title}
-                                        </Typography>
-                                        <Typography className={classes.productDescription} variant="body1" gutterBottom align="center">
-                                            {includedService.description}
-                                        </Typography>
-                                        <figure className={classes.productImageContainer}>
-                                            <img src={includedService.img} alt="" className={classes.productImage}  />
-                                        </figure>
-                                    </aside>
-                                ))
-                            }
-                        </div>
-                    </section>
-                    <section className={classes.mayahiiDescriptionContainer}>
-                        <aside className={classes.mayahiiDescriptionF}>
-                            <figure className={classes.bookImageContainer}>
-                                <img src="https://s3.amazonaws.com/mayahii-frontend/img/imageBookB.png" alt="" className={classes.spaceImage} />
-                            </figure>
-                        </aside>
-                        <aside className={classes.mayahiiDescriptionF}>
-                            <Typography className={classes.mayahiiDescriptionTitle} variant="headline" gutterBottom align="left">
-                                Servicios adicionales
-                            </Typography>
-                            <Typography className={classes.mayahiiDescriptionText} variant="subheading" gutterBottom align="left">
-                                Nuestros servicios de producción
-                                de contenidos educativos habilitarán
-                                a su organización con la capacidad
-                                de proveer a sus usuarios cursos y
-                                entrenamiento de clase mundial,
-                                desarrollado con las técnicas
-                                pedagógicas y audiovisuales más actuales.
-                            </Typography>
-                            <Typography className={classes.mayahiiDescriptionList} variant="subheading" gutterBottom align="left">
-                                Producción de cursos
-                            </Typography>
-                            <Typography className={classes.mayahiiDescriptionList} variant="subheading" gutterBottom align="left">
-                                Paquete de soporte técnico y acompañamiento
-                            </Typography>
-                            <Typography className={classes.mayahiiDescriptionList} variant="subheading" gutterBottom align="left">
-                                Administración completa de Academia
-                            </Typography>
-                            <Typography className={classes.mayahiiDescriptionList} variant="subheading" gutterBottom align="left">
-                                Servicio de consultoría educativa
-                            </Typography>
-                        </aside>
-                    </section>
-                </div> */}
+                                    </div>
+                                </section>
+                            </div>
+                        </section>
+                    </div>
+                </div>
             </div>
         );
     }

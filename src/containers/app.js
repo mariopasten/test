@@ -6,7 +6,6 @@ import { createStore, applyMiddleware } from 'redux';
 import {getUserInSession} from '../actions/index';
 import {BrowserRouter as Router, Route, Link, Switch, Redirect} from 'react-router-dom';
 import Header from './header';
-import Bye from './bye';
 import Landing from '../components/landing';
 import Footer from '../components/footer';
 import Login from './login';
