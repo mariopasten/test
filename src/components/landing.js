@@ -24,7 +24,7 @@ const styles = theme => ({
         backgroundSize: 'auto',
         backgroundAttachment: 'relative',
         backgroundPosition: 'center',
-        height: 450,
+        height: 550,
         width: '100vw',
         backgroundSize: '100%',
         backgroundSize: 'cover',
@@ -36,6 +36,11 @@ const styles = theme => ({
         position: 'absolute',
         paddingLeft: '10%',
         zIndex: 9999,
+        top: 129,
+        borderRadius: 0,
+        '&:hover': {
+            background: '#FFFFFF',
+        },
     },
     bannerLinkIcon: {
         float: 'right',
@@ -239,6 +244,8 @@ const styles = theme => ({
     subHeader: {
         marginTop: 64,
         background: '#243640',
+        position: 'fixed',
+        zIndex: 99999,
     },
     subTitle: {
         width: '75%',
@@ -256,7 +263,7 @@ const styles = theme => ({
     },
     textBannerContainer: {
         position: 'relative',
-        top: 150,
+        top: 250,
     },
     subTextBanner: {
         color: '#ffffff',
@@ -342,7 +349,7 @@ class Login extends Component {
                     </Toolbar>
                 </AppBar>
                 <aside className={classes.banner}>
-                    <a className={classes.bannerLink} href="/myCourses">
+                    <Button className={classes.bannerLink} component={Link} to={`/myCourses`}>
                         <figure className={classes.bannerLinkImageContainer}>
                             <img className={classes.bannerLinkImage} src="https://s3.amazonaws.com/mayahii-frontend/img/search-label.png" alt=""/>
                         </figure>
@@ -355,7 +362,7 @@ class Login extends Component {
                             </Typography>
                         </aside>
                         <Icon className={classes.bannerLinkIcon}>arrow_forward</Icon>
-                    </a>
+                    </Button>
                     <div className={classes.navContainer}>
                         <section className={classes.textBannerContainer}>
                             <Typography className={classes.textBanner} variant="display1" align="left">
@@ -430,7 +437,7 @@ class Login extends Component {
                                         <Typography className={classes.descriptionText} variant="headline" gutterBottom align="left">
                                             Una Academia Mayahii es tu campus en línea disponible en minutos.  Consiste en una suite de herramientas web especialmente diseñadas para la enseñanza y el aprendizaje sobre demanda, sin límite de usuarios, sin límite de cursos, con tu imagen de marca y con accesibilidad desde cualquier lugar y cualquier dispositivo.
                                         </Typography>
-                                        <a href="https://www.mayahii.com/catalogos/adminProductos.action" className={classes.externalLink}>
+                                        <a href="https://www.mayahii.com/#!/academy" className={classes.externalLink}>
                                             VISITAR ACADEMIAS  <Icon className={classes.externalLinkIcon}>arrow_forward</Icon>
                                         </a>
                                     </div>

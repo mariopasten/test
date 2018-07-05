@@ -17,6 +17,7 @@ import Container from '../components/container';
 import Infinite from './infinite';
 import MyPortfolio from './myPortfolio';
 import MyHistory from './myHistory';
+import ForgotPassword from './forgotPassword';
 
 const createStoreWithMiddleware = applyMiddleware(promise)(createStore);
 
@@ -30,6 +31,7 @@ class App extends Component {
                             <Switch>
                                 <Route path="/login" component={Login}/>
                                 <Route path="/register" component={Register}/>
+                                <Route path='/forgotPassword' component={ForgotPassword}/>
                                 <Route path='/myPortfolio' component={MyPortfolio}/>
                                 <Route path='/myHistory' component={MyHistory}/>
                                 <Route path='/myCourses' component={AllMyCourses}/>

@@ -26,20 +26,24 @@ import {getLogOut} from '../actions/index';
 const drawerWidth = 240;
 
 const styles = theme => ({
+    appBar: {
+        background: '#37474F',
+        position: 'fixed',
+        zIndex: 99999,
+    },
+    avatar: {
+        margin: 0,
+        position: 'absolute',
+        right: 0
+    },
     btnHome: {
         padding: 0,
     },
     btnUserMenu: {
         width: '100%',
     },
-    appBar: {
-        background: '#37474F',
-        position: 'fixed',
-    },
-    avatar: {
-        margin: 0,
-        position: 'absolute',
-        right: 0
+    buttonsContainer: {
+        float: 'right'
     },
     fullList: {
         width: 'auto'
@@ -126,6 +130,12 @@ const styles = theme => ({
         marginLeft: '40%',
         marginRight: '40%',
         width: '20%'
+    },
+    registerText: {
+        marginRight: 25,
+        position: 'relative',
+        top: 15,
+        color: '#FFFFFF',
     },
     root: {
         flexGrow: 1
@@ -230,10 +240,17 @@ class Header extends React.Component {
                             </Hidden>
                             {
                                 !this.props.userInSession.usuario
-                                    ?   <Button className={classes.loginText} variant="contained" component={Link} to={`/login`}>
-                                            Iniciar sesión
-                                        </Button>
-                                    :   <div className={classes.headerInfoUser}>
+                                    ?
+                                        <div className={classes.buttonsContainer}>
+                                            <Button component={Link} to={`/register`}  className={classes.registerText}>
+                                                Regístrate
+                                            </Button>
+                                            <Button className={classes.loginText} variant="contained" component={Link} to={`/login`}>
+                                                Iniciar sesión
+                                            </Button>
+                                        </div>
+                                    :
+                                        <div className={classes.headerInfoUser}>
                                             <Button
                                                 aria-owns={userMenu ? 'fade-menu' : null}
                                                 aria-haspopup="true"
@@ -251,8 +268,9 @@ class Header extends React.Component {
                                                 open={Boolean(userMenu)}
                                                 onClose={this.handleCloseUser}
                                             >
-                                                <MenuItem onClick={this.handleCloseUser} button="button" component={Link} to={`/myPortfolio`}>Mi Portafolio</MenuItem>
-                                                <MenuItem onClick={this.handleCloseUser} button="button" component={Link} to={`/myHistory`}>Mi Historial</MenuItem>
+                                                <MenuItem onClick={this.handleCloseUser} button="button" component={Link} to={`/myPortfolio`}>Portafolio</MenuItem>
+                                                <MenuItem onClick={this.handleCloseUser} button="button" component={Link} to={`/myHistory`}>Historial</MenuItem>
+                                                <MenuItem onClick={this.handleCloseUser} button="button" component="a" href="http://ayuda.mayahii.com/" target="_blank">Centro de ayuda</MenuItem>
                                                 <MenuItem onClick={this.handleLogOut}>Logout</MenuItem>
                                             </Menu>
                                         </div>

@@ -10,6 +10,7 @@ import DataInfinite from './get_infinite_data_reducer';
 import Userawards from './get_user_awards_reducer';
 import UserHistory from './get_history_reducer';
 import DeleteVideo from './delete_video_history_reducer';
+import ForgotPassword from './forgot_password_reducer';
 
 const rootReducer = combineReducers({
     state: (state = {}) => state,
@@ -24,6 +25,7 @@ const rootReducer = combineReducers({
     userawards: Userawards,
     userHistory: UserHistory,
     deleteVideo: DeleteVideo,
+    forgotPassword: ForgotPassword,
 });
 
 export default rootReducer;

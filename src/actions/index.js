@@ -10,6 +10,7 @@ import {GET_INFINITE_DATA} from '../constants/actionTypes';
 import {GET_USER_AWARDS_DATA} from '../constants/actionTypes';
 import {GET_HISTORY_DATA} from '../constants/actionTypes';
 import {DELETE_VIDEO_HISTORY} from '../constants/actionTypes';
+import {FORGOT_PASSWORD} from '../constants/actionTypes';
 
 const protocol = "https";
 const subDomainString = "www";
@@ -164,6 +165,19 @@ export function deleteVideoHistory(idVideo){
     });
     return {
         type: "DELETE_VIDEO_HISTORY",
+        payload: request
+    }
+}
+
+export function forgotPasswordAction(email){
+    const request = axios.get(protocol+'://'+subDomainString+'.mayahii.com/panel/email_forgot_password',{
+        params: {
+            email: email,
+        },
+        withCredentials:true
+    });
+    return {
+        type: "FORGOT_PASSWORD",
         payload: request
     }
 }

@@ -33,7 +33,7 @@ const styles = theme => ({
     },
     forgotPassword: {
         width: '50%',
-        marginLeft: '25%',
+        marginLeft: '24%',
         marginRight: '25%',
         marginTop: 20,
     },
@@ -76,9 +76,17 @@ const styles = theme => ({
         marginLeft: '2.5%',
         marginRight: '2.5%',
     },
+    registerBtn: {
+        fontSize: 12,
+    },
+    registerContainer: {
+        position: 'relative',
+        top: 15,
+    },
     registerOption: {
         float: 'left',
         marginTop: 6,
+        fontSize: 12,
     },
     registerText: {
         textAlign: 'left'
@@ -175,18 +183,10 @@ class Login extends Component {
                                           value={this.state.userEmail}
                                           onChange={this.handleUserChange}
                                         />
-                                        {/* <TextField
-                                            label="Contraseña"
-                                            className={classes.textField}
-                                            margin="normal"
-                                            type= "password"
-                                            value={this.state.userPassword}
-                                            onChange={this.handlePasswordChange}
-                                        /> */}
-                                        <InputLabel htmlFor="adornment-password">Password</InputLabel>
+                                        <InputLabel htmlFor="passwordAdornment">Password</InputLabel>
                                         <Input
                                             className={classes.textField}
-                                            id="adornment-password"
+                                            id="passwordAdornment"
                                             type={this.state.showPassword ? 'text' : 'password'}
                                             value={this.state.userPassword}
                                             onChange={this.handlePasswordChange}
@@ -222,7 +222,7 @@ class Login extends Component {
                                     >
                                         Olvidé mi contraseña
                                     </Button>
-                                    <aside>
+                                    <aside className={classes.registerContainer}>
                                         <Typography className={classes.registerOption} variant="body2" gutterBottom>
                                             ¿No tienes cuenta?
                                         </Typography>
@@ -230,9 +230,9 @@ class Login extends Component {
                                             color="primary"
                                             component={Link}
                                             to="/register"
-                                            className={classes.register}
+                                            className={classes.registerBtn}
                                         >
-                                            Registrate
+                                            Regístrate
                                         </Button>
                                     </aside>
                                     {/* <p id="warningTextStatus" className={classes.warningTextStatus}>

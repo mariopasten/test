@@ -45,7 +45,7 @@ const styles = theme => ({
         textAlign: 'left'
     },
     navContainer: {
-        top: 64,
+        top: 84,
         '@media (min-width: 960px)': {
             width: 960,
             marginLeft: 'auto',
@@ -84,7 +84,7 @@ class Register extends Component {
             lastName: '',
             email: '',
             userPassword: '',
-            checkedTerms: true,
+            checkedTerms: false,
         };
         this.handleChange = this.handleChange.bind(this);
         this.handleNameChange = this.handleNameChange.bind(this);
@@ -110,9 +110,8 @@ class Register extends Component {
         this.setState({userPassword: event.target.value});
     }
 
-    handleChange(event) {
-        // console.log(event)
-        // this.setState({ checkedTerms: false });
+    handleChange() {
+        this.setState(state => ({ checkedTerms: !state.checkedTerms }));
     };
 
     handleSubmit(event) {
@@ -239,7 +238,7 @@ class Register extends Component {
                         />
                         <Checkbox
                             checked={this.state.checkedTerms}
-                            onChange={this.handleChange('checkedTerms')}
+                            onChange={this.handleChange}
                             value="checkedTerms"
                             color="primary"
                         />
