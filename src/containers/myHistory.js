@@ -89,6 +89,9 @@ const styles = theme => ({
         width: '20%',
         display: 'none',
     },
+    title: {
+        fontWeight: 'bold',
+    },
     titleLesson: {
         cursor: 'pointer',
     }
@@ -144,7 +147,7 @@ class MyHistory extends Component {
                             />
                 :
                     render = <div>
-                                <Typography variant="display2" gutterBottom align='left'>
+                                <Typography className={classes.title} variant="display2" gutterBottom align='left'>
                                     Historial
                                 </Typography>
                                 {

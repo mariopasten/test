@@ -32,7 +32,7 @@ const styles = theme => ({
     },
     awardImageCourse: {
         width: '100%',
-        height: 'auto',
+        height: 163,
         margin: 0,
     },
     awardImage: {
@@ -85,6 +85,9 @@ const styles = theme => ({
     progress: {
         display: 'none',
     },
+    title: {
+        fontWeight: 'bold',
+    },
 });
 
 
@@ -127,8 +130,8 @@ class MyPortfolio extends Component {
                             />
                 :
                     render = <div>
-                                <Typography variant="display2" gutterBottom align='left'>
-                                    Mi Portafolio
+                                <Typography className={classes.title} variant="display2" gutterBottom align='left'>
+                                    Portafolio
                                 </Typography>
                                 {
                                     this.props.userawards != null && this.props.userawards.map(userAward => {

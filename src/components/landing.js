@@ -11,8 +11,12 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import {Link} from 'react-router-dom';
 import Icon from '@material-ui/core/Icon';
+import ArrowDropDown from '@material-ui/icons/ArrowDropDown'
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
+import Card from '@material-ui/core/Card';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
 const url = 'url';
 
 const styles = theme => ({
@@ -83,6 +87,15 @@ const styles = theme => ({
         fontSize: 13,
         color: '#4A4A4A',
     },
+    cardUdemImage: {
+        width: '100%',
+    },
+    cardUdemImageContainer: {
+        margin: 0
+    },
+    cardContainerUdem: {
+        padding: 0
+    },
     descriptionProductContainer: {
         width: '40%',
         float: 'left',
@@ -95,6 +108,7 @@ const styles = theme => ({
     },
     descriptionSubText: {
         margin: '45px 0',
+        color: '#4A4A4A',
     },
     descriptionText: {
         fontSize: 14,
@@ -180,6 +194,15 @@ const styles = theme => ({
         marginRight: '22%',
         color: '#FFFFFF',
     },
+    popUpUdem: {
+        position: 'relative',
+        top: 400,
+        // se quitan estos elementos cundo se quite el popUp UDEM
+        float: 'left',
+        width: '25%',
+        marginLeft: '7.5%',
+        marginRight: '7.5%',
+    },
     productContainer: {
         width: '100%',
         minHeight: 230,
@@ -247,6 +270,19 @@ const styles = theme => ({
         position: 'fixed',
         zIndex: 99999,
     },
+    subTextBanner: {
+        color: '#ffffff',
+        paddingTop: 10,
+        // width: '60%',
+        // se regresa a 60% cuando se quite popUp UDEM
+        width: '100%',
+        lineHeight: '25px',
+        fontSize: '1.125em',
+        fontWeight: 'lighter',
+        '@media (min-width: 960px)': {
+            marginLeft: 0,
+        },
+    },
     subTitle: {
         width: '75%',
         color: '#455A64',
@@ -264,17 +300,9 @@ const styles = theme => ({
     textBannerContainer: {
         position: 'relative',
         top: 250,
-    },
-    subTextBanner: {
-        color: '#ffffff',
-        paddingTop: 10,
-        width: '60%',
-        lineHeight: '25px',
-        fontSize: '1.125em',
-        fontWeight: 'lighter',
-        '@media (min-width: 960px)': {
-            marginLeft: 0,
-        },
+        // se quitan estos elementos cundo se quite el popUp UDEM
+        float: 'left',
+        width: '60%'
     },
     titleProductContainer: {
         width: '50%',
@@ -366,24 +394,39 @@ class Login extends Component {
                     <div className={classes.navContainer}>
                         <section className={classes.textBannerContainer}>
                             <Typography className={classes.textBanner} variant="display1" align="left">
-                                Enseñanza de calidad.
+                                Innovación Educativa.
                             </Typography>
                             <Typography className={classes.textBanner} variant="display1" align="left">
-                                Aprendizaje ideal.
+                                Enseñanza de Calidad.
                             </Typography>
                             <Typography className={classes.textBanner} variant="display1" align="left">
                                 Capacitación sin límites.
                             </Typography>
                             <Typography className={classes.subTextBanner} variant="Subheading" gutterBottom align="left">
-                                Mayahii es una plataforma
-                                de educación y transformación
-                                digital. En Mayahii nos dedicamos
+                                Mayahii es una institución educativa
+                                y de transformación digital.
+                                En Mayahii nos dedicamos
                                 a resolver los problemas de la
                                 educación del Siglo XXI a través
                                 de una plataforma que permite educar
                                 de manera pública y privada a un gran
                                 número de alumnos.
                             </Typography>
+                        </section>
+                        <section className={classes.popUpUdem}>
+                            <Card className={classes.card}>
+                                <CardContent className={classes.cardContainerUdem}>
+                                    <figure className={classes.cardUdemImageContainer}>
+                                        <img className={classes.cardUdemImage} src="https://s3.amazonaws.com/mayahii-images/originals/headers/1499/header1200x_corre.jpg" alt=""/>
+                                    </figure>
+                                    <Typography variant="title" gutterBottom align='center'>
+                                        ¡Bienvenidos alumnos UDEM!
+                                    </Typography>
+                                    <Tabs>
+                                        <Tab button="button" href={`http://poblaciones.mayahii.com/udem`} label="Si estás buscando tus cursos da clic en este mensaje" />
+                                    </Tabs>
+                                </CardContent>
+                            </Card>
                         </section>
                     </div>
                 </aside>
@@ -450,7 +493,7 @@ class Login extends Component {
                     <section className={classes.mayahiiDescriptionContainer}>
                         <div className={classes.productContainer}>
                             <aside className={classes.titleProductContainer}>
-                                <Typography variant="headline" gutterBottom align="left">
+                                <Typography className={classes.titleSection} variant="headline" gutterBottom align="left">
                                     Capacita tu empresa
                                 </Typography>
                                 <Typography className={classes.subTitle} variant="display3" gutterBottom align="left">
@@ -478,8 +521,8 @@ class Login extends Component {
                         <section className={classes.mayahiiDescriptionContainer}>
                             <div className={classes.productContainer}>
                                 <aside className={classes.titleProductContainer}>
-                                    <Typography variant="headline" gutterBottom align="left">
-                                        Producción de material
+                                    <Typography className={classes.titleSection} variant="headline" gutterBottom align="left">
+                                        Producción de material instruccional
                                     </Typography>
                                     <Typography className={classes.subTitle} variant="display3" gutterBottom align="left">
                                         PLANEACIÓN Y PRODUCCIÓN EDUCATIVA

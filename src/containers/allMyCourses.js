@@ -69,6 +69,9 @@ const styles = theme => ({
     table: {
         minWidth: 700,
     },
+    title: {
+        fontWeight: 'bold',    
+    },
 });
 
 let uuidPrev = null;
@@ -141,7 +144,7 @@ class AllMyCourses extends Component {
                             />
                 :
                     render = <div>
-                                <Typography variant="display2" gutterBottom align='left'>
+                                <Typography className={classes.title} variant="display2" gutterBottom align='left'>
                                     Mis Cursos
                                 </Typography>
                                 <ExpansionPanel expanded={expanded === 'myAutoCourses'} onChange={() => this.handleChangeExpansion('myAutoCourses', this.state.expanded)}>

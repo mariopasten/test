@@ -91,6 +91,10 @@ const styles = theme => ({
     registerText: {
         textAlign: 'left'
     },
+    registerTextP: {
+        textAlign: 'left',
+        fontWeight: 'bold',
+    },
     textField: {
         width: '100%',
     },
@@ -167,7 +171,7 @@ class Login extends Component {
                                 </Typography>
                             </aside>
                             <section className={classes.registerSection}>
-                                <Typography className={classes.registerText} variant="display1" gutterBottom>
+                                <Typography className={classes.registerTextP} variant="display1" gutterBottom>
                                     Inicio de sesión en Mayahii
                                 </Typography>
                                 <Typography className={classes.registerText} variant="headline" gutterBottom>

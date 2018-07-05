@@ -72,6 +72,9 @@ const styles = theme => ({
         marginLeft: '1.5%',
         marginRight: '1.5%',
     },
+    registerTextP: {
+        fontWeight: 'bold',
+    },
     textField: {
         width: '100%',
     }
@@ -178,7 +181,7 @@ class Register extends Component {
 
         return(
             <div className={classes.navContainer}>
-                <Typography variant="display1" gutterBottom align="center">
+                <Typography className={classes.registerTextP} variant="display1" gutterBottom align="center">
                     Registro de cuenta Mayahii
                 </Typography>
                 <aside className={classes.registerDescription}>
