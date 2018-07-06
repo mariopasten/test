@@ -28,19 +28,35 @@ const drawerWidth = 240;
 const styles = theme => ({
     appBar: {
         background: '#37474F',
+        boxShadow: 'none',
         position: 'fixed',
         zIndex: 99999,
     },
     avatar: {
         margin: 0,
-        position: 'absolute',
-        right: 0
+        position: 'relative',
+        right: 0,
+        top: '-5px',
+        width: 25,
+        height: 25,
+        '@media (min-width: 1280px)': {
+            margin: 0,
+            position: 'absolute',
+            right: 0,
+            width: 40,
+            height: 40,
+        },
     },
     btnHome: {
         padding: 0,
     },
     btnUserMenu: {
         width: '100%',
+    },
+    btnMenu: {
+        right: 0,
+        position: 'absolute',
+        top: 8,
     },
     buttonsContainer: {
         float: 'right'
@@ -52,7 +68,17 @@ const styles = theme => ({
         position: 'absolute',
         right: 0,
         top: 13,
-        width: '22%',
+        width: '20%',
+        marginLeft: '40%',
+        marginRight: '40%',
+        '@media (min-width: 1280px)': {
+            position: 'absolute',
+            right: 0,
+            top: 13,
+            width: '22%',
+            marginLeft: 0,
+            marginRight: 0,
+        },
     },
     hide: {
         display: 'none'
@@ -62,18 +88,21 @@ const styles = theme => ({
         height: '100%'
     },
     imgHeaderContainer: {
-        width: 128,
-        height: 64,
+        width: 63,
+        height: 31,
         position: 'relative',
         marginLeft: 'auto',
         marginRight: 'auto',
         marginTop: 0,
         marginBottom: 0,
-        '@media (min-width: 960px)': {
-            margin: 0,
-            float: 'left',
+        '@media (min-width: 1280px)': {
+            width: 128,
+            height: 64,
             position: 'relative',
-            top: 0
+            marginLeft: 'auto',
+            marginRight: 'auto',
+            marginTop: 0,
+            marginBottom: 0,
         }
     },
     list: {
@@ -142,9 +171,13 @@ const styles = theme => ({
     },
     toolBar: {
         padding: 0,
-        width: '80%',
-        marginLeft: '10%',
-        marginRight: '10%',
+        width: '100%',
+        '@media (min-width: 1280px)': {
+            padding: 0,
+            width: '80%',
+            marginLeft: '10%',
+            marginRight: '10%',
+        },
     },
 });
 
@@ -152,7 +185,7 @@ class Header extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            left: false,
+            right: false,
             anchorEl: null,
             userMenu: null,
         };
@@ -183,11 +216,11 @@ class Header extends React.Component {
     };
 
     handleDrawerClose() {
-        this.setState({left: false});
+        this.setState({right: false});
     };
 
     handleDrawerOpen() {
-        this.setState({left: true});
+        this.setState({right: true});
     };
 
     handleLogOut() {
@@ -210,22 +243,6 @@ class Header extends React.Component {
             <div className={classes.root}>
                 <AppBar position="static" className={classes.appBar}>
                     <Toolbar className={classes.toolBar}>
-                        <Hidden mdUp="mdUp">
-                            <Button onClick={this.handleDrawerOpen}>
-                                <Icon>menu</Icon>
-                            </Button>
-                            <SwipeableDrawer open={this.state.left} onClose={this.handleDrawerClose} onOpen={this.handleDrawerOpen}>
-                                <div tabIndex={0} role="button" onClick={this.handleDrawerClose} onKeyDown={this.handleDrawerClose}>
-                                    <div className={classes.list}>
-                                        <ListItem button="button" component={Link} to={`/login`}>
-                                            <ListItemText primary="Materias"/>
-                                        </ListItem>
-                                        <Divider/>
-                                        <List>2</List>
-                                    </div>
-                                </div>
-                            </SwipeableDrawer>
-                        </Hidden>
                         <div className={classes.navContainer}>
                             <Button className={classes.btnHome} component={Link} to={`/`}>
                                 <figure className={classes.imgHeaderContainer}>
@@ -257,24 +274,57 @@ class Header extends React.Component {
                                                 onClick={this.handleClickUser}
                                                 className={classes.btnUserMenu}
                                             >
-                                                <Hidden xsDown="xsDown">
+                                                <Hidden smDown="smDown">
                                                     <Typography className={classes.nameHeader}>{this.props.userInSession.nombre}</Typography>
                                                 </Hidden>
                                                 <Avatar alt="User Image" src={this.props.userInSession.foto} className={classes.avatar}/>
                                             </Button>
-                                            <Menu
-                                                id="fade-menu"
-                                                anchorEl={userMenu}
-                                                open={Boolean(userMenu)}
-                                                onClose={this.handleCloseUser}
-                                            >
-                                                <MenuItem onClick={this.handleCloseUser} button="button" component={Link} to={`/myPortfolio`}>Portafolio</MenuItem>
-                                                <MenuItem onClick={this.handleCloseUser} button="button" component={Link} to={`/myHistory`}>Historial</MenuItem>
-                                                <MenuItem onClick={this.handleCloseUser} button="button" component="a" href="http://ayuda.mayahii.com/" target="_blank">Centro de ayuda</MenuItem>
-                                                <MenuItem onClick={this.handleLogOut}>Logout</MenuItem>
-                                            </Menu>
+                                            <Hidden smDown="smDown">
+                                                <Menu
+                                                    id="fade-menu"
+                                                    anchorEl={userMenu}
+                                                    open={Boolean(userMenu)}
+                                                    onClose={this.handleCloseUser}
+                                                >
+                                                    <MenuItem onClick={this.handleCloseUser} button="button" component={Link} to={`/myPortfolio`}>Portafolio</MenuItem>
+                                                    <MenuItem onClick={this.handleCloseUser} button="button" component={Link} to={`/myHistory`}>Historial</MenuItem>
+                                                    <MenuItem onClick={this.handleCloseUser} button="button" component="a" href="http://ayuda.mayahii.com/" target="_blank">Centro de ayuda</MenuItem>
+                                                    <MenuItem onClick={this.handleLogOut}>Logout</MenuItem>
+                                                </Menu>
+                                            </Hidden>
                                         </div>
                             }
+                            <Hidden mdUp="mdUp">
+                                <Button className={classes.btnMenu} onClick={this.handleDrawerOpen}>
+                                    <Icon>menu</Icon>
+                                </Button>
+                                <SwipeableDrawer anchor="right" open={this.state.right} onClose={this.handleDrawerClose} onOpen={this.handleDrawerOpen}>
+                                    <div tabIndex={0} role="button" onClick={this.handleDrawerClose} onKeyDown={this.handleDrawerClose}>
+                                        <div className={classes.list}>
+                                            <ListItem button="button" component={Link} to={`/`}>
+                                                <ListItemText primary="Inicio"/>
+                                            </ListItem>
+                                            <ListItem button="button" component={Link} to={`/myCourses`}>
+                                                <ListItemText primary="Mis cursos"/>
+                                            </ListItem>
+                                            <Divider/>
+                                            <ListItem button="button" component={Link} to={`/myHistory`}>
+                                                <ListItemText primary="Historial"/>
+                                            </ListItem>
+                                            <ListItem button="button" component={Link} to={`/myPortfolio`}>
+                                                <ListItemText primary="Portafolio"/>
+                                            </ListItem>
+                                            <Divider/>
+                                            <ListItem button="button" component="a" href="http://ayuda.mayahii.com/" target="_blank">
+                                                <ListItemText primary="Centro de ayuda"/>
+                                            </ListItem>
+                                            <ListItem onClick={this.handleLogOut}>
+                                                <ListItemText primary="Logout"/>
+                                            </ListItem>
+                                        </div>
+                                    </div>
+                                </SwipeableDrawer>
+                            </Hidden>
                         </div>
                     </Toolbar>
                 </AppBar>

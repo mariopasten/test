@@ -17,6 +17,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
+import Hidden from '@material-ui/core/Hidden';
 const url = 'url';
 
 const styles = theme => ({
@@ -28,32 +29,57 @@ const styles = theme => ({
         backgroundSize: 'auto',
         backgroundAttachment: 'relative',
         backgroundPosition: 'center',
-        height: 550,
+        height: 720,
         width: '100vw',
         backgroundSize: '100%',
         backgroundSize: 'cover',
         position: 'relative',
+        '@media (min-width: 1280px)': {
+            height: 550,
+        }
     },
     bannerLink: {
-        width: '50%',
-        background: '#FFFFFF',
-        position: 'absolute',
-        paddingLeft: '10%',
+        top: 100,
+        width: '90%',
         zIndex: 9999,
-        top: 129,
+        position: 'absolute',
+        background: '#FFFFFF',
+        marginLeft: '5%',
         borderRadius: 0,
+        padding: 0,
+        height: 90,
         '&:hover': {
             background: '#FFFFFF',
         },
+        '@media (min-width: 1280px)': {
+            width: '50%',
+            background: '#FFFFFF',
+            position: 'absolute',
+            paddingLeft: '10%',
+            zIndex: 9999,
+            top: 129,
+            borderRadius: 0,
+        },
     },
     bannerLinkIcon: {
-        float: 'right',
+        right: 0,
         background: '#536DFE',
         borderRadius: '50%',
         padding: 2,
         color: '#FFFFFF',
         marginRight: 50,
-        marginTop: 30,
+        marginTop: 14,
+        position: 'absolute',
+        '@media (min-width: 1280px)': {
+            float: 'right',
+            background: '#536DFE',
+            borderRadius: '50%',
+            padding: 2,
+            color: '#FFFFFF',
+            marginRight: 50,
+            marginLeft: 0,
+            marginTop: 30,
+        },
     },
     bannerLinkImage: {
         width: '100%',
@@ -71,21 +97,36 @@ const styles = theme => ({
         marginRight: '10%',
     },
     bannerLinkText: {
-        fontSize: 15,
+        fontSize: 13,
         color: '#4A4A4A',
+        '@media (min-width: 1280px)': {
+            fontSize: 15,
+        },
     },
     bannerLinkSubText: {
         marginTop: 20,
-        fontSize: 17,
-        color: '#4A4A4A',
-        textDecoration: 'underline',
-    },
-    bannerLinkTextcontainer: {
-        marginLeft: 50,
-        float: 'left',
-        marginTop: 10,
         fontSize: 13,
         color: '#4A4A4A',
+        textDecoration: 'underline',
+        '@media (min-width: 1280px)': {
+            fontSize: 17,
+        },
+    },
+    bannerLinkTextcontainer: {
+        marginLeft: 0,
+        left: 0,
+        marginTop: 10,
+        fontSize: 13,
+        marginLeft: 15,
+        color: '#4A4A4A',
+        position: 'absolute',
+        '@media (min-width: 1280px)': {
+            marginLeft: 50,
+            float: 'left',
+            marginTop: 10,
+            fontSize: 13,
+            color: '#4A4A4A',
+        },
     },
     cardUdemImage: {
         width: '100%',
@@ -97,8 +138,13 @@ const styles = theme => ({
         padding: 0
     },
     descriptionProductContainer: {
-        width: '40%',
+        width: '50%',
         float: 'left',
+        marginLeft: '25%',
+        '@media (min-width: 1280px)': {
+            width: '40%',
+            marginLeft: 0,
+        },
     },
     descriptionTitle: {
         color: '#4A4A4A',
@@ -131,7 +177,7 @@ const styles = theme => ({
         padding: 2,
     },
     titleProductContainer: {
-        width: '60%'
+        width: '60%',
     },
     mayahiiDescriptionContainer: {
         marginTop: 50,
@@ -196,12 +242,20 @@ const styles = theme => ({
     },
     popUpUdem: {
         position: 'relative',
-        top: 400,
+        top: 250,
         // se quitan estos elementos cundo se quite el popUp UDEM
-        float: 'left',
-        width: '25%',
-        marginLeft: '7.5%',
-        marginRight: '7.5%',
+        width: '90%',
+        marginLeft: '5%',
+        marginRight: '5%',
+        '@media (min-width: 1280px)': {
+            position: 'relative',
+            top: 400,
+            // se quitan estos elementos cundo se quite el popUp UDEM
+            float: 'left',
+            width: '25%',
+            marginLeft: '7.5%',
+            marginRight: '7.5%',
+        }
     },
     productContainer: {
         width: '100%',
@@ -221,15 +275,24 @@ const styles = theme => ({
         height: 'auto',
     },
     productImageContainer: {
-        width: '60%',
+        width: '100%',
         margin: 0,
         paddingBottom: 50,
+        '@media (min-width: 1280px)': {
+            width: '60%',
+        }
     },
     productImageSecondContainer: {
-        width: '130%',
+        width: '100%',
         paddingBottom: 50,
-        marginLeft: '-90px',
+        marginLeft: 0,
         marginTop: 50,
+        '@media (min-width: 1280px)': {
+            width: '130%',
+            paddingBottom: 50,
+            marginLeft: '-90px',
+            marginTop: 50,
+        }
     },
     productLink: {
         textDecoration: 'none',
@@ -279,7 +342,7 @@ const styles = theme => ({
         lineHeight: '25px',
         fontSize: '1.125em',
         fontWeight: 'lighter',
-        '@media (min-width: 960px)': {
+        '@media (min-width: 1280px)': {
             marginLeft: 0,
         },
     },
@@ -293,20 +356,30 @@ const styles = theme => ({
         color: '#ffffff',
         paddingTop: 10,
         fontSize: '1.5em',
-        '@media (min-width: 960px)': {
+        '@media (min-width: 1280px)': {
             marginLeft: 0,
         },
     },
     textBannerContainer: {
         position: 'relative',
-        top: 250,
+        top: 285,
         // se quitan estos elementos cundo se quite el popUp UDEM
         float: 'left',
-        width: '60%'
+        width: '90%',
+        marginLeft: '5%',
+        '@media (min-width: 1280px)': {
+            width: '60%',
+            marginLeft: 0,
+            top: 250,
+        },
     },
     titleProductContainer: {
         width: '50%',
         float: 'left',
+        marginLeft: '25%',
+        '@media (min-width: 1280px)': {
+            marginLeft: 0,
+        },
     },
     titleSection: {
         color: '#455A64',
@@ -343,8 +416,14 @@ class Login extends Component {
         this.state = {
             anchorEl: null,
         };
+
+        this.udemPopulation = this.udemPopulation.bind(this);
         this.handleClick = this.handleClick.bind(this);
         this.handleClose = this.handleClose.bind(this);
+    }
+
+    udemPopulation() {
+        window.open(`http://poblaciones.mayahii.com/udem`, '_blank');
     }
 
     handleClick(event) {
@@ -360,27 +439,31 @@ class Login extends Component {
         const {anchorEl} = this.state;
         return(
             <div>
-                <AppBar className={classes.subHeader} position="static" color="default">
-                    <Toolbar>
-                        <Tabs className={classes.navMenu}>
-                            <Tab className={classes.navItem} button="button" href={`http://formacioncontinua.mayahii.com/`} label="FORMACIÓN DOCENTE"/>
-                            <Tab className={classes.navItem} button="button" href={`https://www.mayahii.com/#!/academy`} label="CREA TU ACADEMIA"/>
-                            <Tab className={classes.navItem} label="Universo Mayahii" aria-owns={anchorEl
-                                    ? 'simple-menu'
-                                    : null} aria-haspopup="true" onClick={this.handleClick}/>
+                <Hidden smDown="smDown">
+                    <AppBar className={classes.subHeader} position="static" color="default">
+                        <Toolbar>
+                            <Tabs className={classes.navMenu}>
+                                <Tab className={classes.navItem} button="button" href={`http://formacioncontinua.mayahii.com/`} label="FORMACIÓN DOCENTE"/>
+                                <Tab className={classes.navItem} button="button" href={`https://www.mayahii.com/#!/academy`} label="CREA TU ACADEMIA"/>
+                                <Tab className={classes.navItem} label="Universo Mayahii" aria-owns={anchorEl
+                                        ? 'simple-menu'
+                                        : null} aria-haspopup="true" onClick={this.handleClick}/>
 
-                            <Menu id="simple-menu" anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={this.handleClose}>
-                                <MenuItem onClick={this.handleClose}><a className={classes.menuItem} href="https://www.mayahii.com/educadores" target="_blank">Mayahii Educadores</a></MenuItem>
-                                <MenuItem onClick={this.handleClose}><a className={classes.menuItem} href="https://www.mayahii.com/campusgoogle" target="_blank">Mayahii Campus Google</a></MenuItem>
-                            </Menu>
-                        </Tabs>
-                    </Toolbar>
-                </AppBar>
+                                <Menu id="simple-menu" anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={this.handleClose}>
+                                    <MenuItem onClick={this.handleClose}><a className={classes.menuItem} href="https://www.mayahii.com/educadores" target="_blank">Mayahii Educadores</a></MenuItem>
+                                    <MenuItem onClick={this.handleClose}><a className={classes.menuItem} href="https://www.mayahii.com/campusgoogle" target="_blank">Mayahii Campus Google</a></MenuItem>
+                                </Menu>
+                            </Tabs>
+                        </Toolbar>
+                    </AppBar>
+                </Hidden>
                 <aside className={classes.banner}>
                     <Button className={classes.bannerLink} component={Link} to={`/myCourses`}>
-                        <figure className={classes.bannerLinkImageContainer}>
-                            <img className={classes.bannerLinkImage} src="https://s3.amazonaws.com/mayahii-frontend/img/search-label.png" alt=""/>
-                        </figure>
+                        <Hidden mdDown="mdDown">
+                            <figure className={classes.bannerLinkImageContainer}>
+                                <img className={classes.bannerLinkImage} src="https://s3.amazonaws.com/mayahii-frontend/img/search-label.png" alt=""/>
+                            </figure>
+                        </Hidden>
                         <aside className={classes.bannerLinkTextcontainer}>
                             <Typography className={classes.bannerLinkText} variant="headline" gutterBottom align="left">
                                 ¿Estás buscando tus cursos?
@@ -391,6 +474,20 @@ class Login extends Component {
                         </aside>
                         <Icon className={classes.bannerLinkIcon}>arrow_forward</Icon>
                     </Button>
+                    <Hidden mdUp="mdUp">
+                        <section className={classes.popUpUdem}>
+                            <Card className={classes.card} onClick={this.udemPopulation}>
+                                <CardContent className={classes.cardContainerUdem}>
+                                    <figure className={classes.cardUdemImageContainer}>
+                                        <img className={classes.cardUdemImage} src="https://s3.amazonaws.com/mayahii-images/originals/headers/1499/header1200x_corre.jpg" alt=""/>
+                                    </figure>
+                                    <Typography variant="subheading" gutterBottom align='center'>
+                                        Si estás buscando tus cursos da clic en este mensaje
+                                    </Typography>
+                                </CardContent>
+                            </Card>
+                        </section>
+                    </Hidden>
                     <div className={classes.navContainer}>
                         <section className={classes.textBannerContainer}>
                             <Typography className={classes.textBanner} variant="display1" align="left">
@@ -413,21 +510,23 @@ class Login extends Component {
                                 número de alumnos.
                             </Typography>
                         </section>
-                        <section className={classes.popUpUdem}>
-                            <Card className={classes.card}>
-                                <CardContent className={classes.cardContainerUdem}>
-                                    <figure className={classes.cardUdemImageContainer}>
-                                        <img className={classes.cardUdemImage} src="https://s3.amazonaws.com/mayahii-images/originals/headers/1499/header1200x_corre.jpg" alt=""/>
-                                    </figure>
-                                    <Typography variant="title" gutterBottom align='center'>
-                                        ¡Bienvenidos alumnos UDEM!
-                                    </Typography>
-                                    <Tabs>
-                                        <Tab button="button" href={`http://poblaciones.mayahii.com/udem`} label="Si estás buscando tus cursos da clic en este mensaje" />
-                                    </Tabs>
-                                </CardContent>
-                            </Card>
-                        </section>
+                        <Hidden smDown="smDown">
+                            <section className={classes.popUpUdem}>
+                                <Card className={classes.card}>
+                                    <CardContent className={classes.cardContainerUdem}>
+                                        <figure className={classes.cardUdemImageContainer}>
+                                            <img className={classes.cardUdemImage} src="https://s3.amazonaws.com/mayahii-images/originals/headers/1499/header1200x_corre.jpg" alt=""/>
+                                        </figure>
+                                        <Typography variant="title" gutterBottom align='center'>
+                                            ¡Bienvenidos alumnos UDEM!
+                                        </Typography>
+                                        <Tabs>
+                                            <Tab button="button" href={`http://poblaciones.mayahii.com/udem`} label="Si estás buscando tus cursos da clic en este mensaje" />
+                                        </Tabs>
+                                    </CardContent>
+                                </Card>
+                            </section>
+                        </Hidden>
                     </div>
                 </aside>
                 <div className={classes.navContainer}>

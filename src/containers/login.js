@@ -140,7 +140,6 @@ class Login extends Component {
                 window.location.href = '/';
             }
         }
-
         return true;
     }
 
