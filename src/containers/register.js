@@ -8,6 +8,7 @@ import TextField from '@material-ui/core/TextField';
 import Checkbox from '@material-ui/core/Checkbox';
 import Button from '@material-ui/core/Button';
 import {getRegisterNewUser} from '../actions/index';
+import Hidden from '@material-ui/core/Hidden';
 import {Link} from 'react-router-dom';
 
 const styles = theme => ({
@@ -29,7 +30,7 @@ const styles = theme => ({
         height: '100%'
     },
     imageRegisterContainer: {
-        width: '30%',
+        width: '28%',
         float: 'left',
         marginLeft: '1.5%',
         marginRight: '1.5%',
@@ -61,19 +62,39 @@ const styles = theme => ({
         }
     },
     registerDescription: {
-        width: '30%',
+        width: '90%',
         float: 'left',
-        marginLeft: '1.5%',
-        marginRight: '1.5%',
+        marginLeft: '2.5%',
+        marginRight: '2.5%',
+        '@media (min-width: 960px)': {
+            width: '30%',
+            float: 'left',
+            marginLeft: '1.5%',
+            marginRight: '1.5%',
+        }
     },
     registerForm: {
-        width: '30%',
+        width: '90%',
         float: 'left',
-        marginLeft: '1.5%',
-        marginRight: '1.5%',
+        marginLeft: '2.5%',
+        marginRight: '2.5%',
+        '@media (min-width: 960px)': {
+            width: '30%',
+            float: 'left',
+            marginLeft: '1.5%',
+            marginRight: '1.5%',
+            marginBottom: 200,
+        },
+        '@media (min-width: 1200px)': {
+            marginBottom: 100,
+        }
     },
     registerTextP: {
         fontWeight: 'bold',
+        marginTop: 100,
+        '@media (min-width: 960px)': {
+            marginTop: 0,
+        }
     },
     textField: {
         width: '100%',
@@ -273,11 +294,14 @@ class Register extends Component {
                         </Button>
                     </aside>
                 </section>
-                <aside className={classes.imageRegisterContainer}>
-                    <figure className={classes.imageRegister}>
-                        <img className={classes.image} src="https://s3.amazonaws.com/mayahii-frontend/img/registerImage.png" />
-                    </figure>
-                </aside>
+                <Hidden smDown="smDown">
+                    <aside className={classes.imageRegisterContainer}>
+                        <figure className={classes.imageRegister}>
+                            <img className={classes.image} src="https://s3.amazonaws.com/mayahii-frontend/img/registerImage.png" />
+                        </figure>
+                    </aside>
+                </Hidden>
+
             </div>
         );
     }

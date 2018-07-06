@@ -25,11 +25,19 @@ const styles = theme => ({
         top: 15,
     },
     descriptionRegisterContainer: {
-        width: '40%',
+        width: '90%',
         marginLeft: '5%',
         marginRight: '5%',
         height: 'auto',
         float: 'left',
+        '@media (min-width: 960px)': {
+            width: '40%',
+            marginLeft: '5%',
+            marginRight: '5%',
+            height: 'auto',
+            float: 'left',
+            marginBottom: 100,
+        },
     },
     forgotPassword: {
         width: '50%',
@@ -45,13 +53,17 @@ const styles = theme => ({
         height: '100%',
         marginLeft: 0,
         marginRight: 0,
+        marginTop: 100,
+        '@media (min-width: 960px)': {
+            marginTop: 0,
+        }
     },
     imgRegister: {
         width: '100%',
         height: '100%',
     },
     navContainer: {
-        top: 64,
+        top: 80,
         '@media (min-width: 960px)': {
             width: 960,
             marginLeft: 'auto',
@@ -59,6 +71,7 @@ const styles = theme => ({
             position: 'relative'
         },
         '@media (min-width: 1200px)': {
+            top: 64,
             width: 1200,
             marginLeft: 'auto',
             marginRight: 'auto',
@@ -70,11 +83,19 @@ const styles = theme => ({
         display: 'none',
     },
     registerSection: {
-        width: '45%',
+        width: '90%',
         float: 'left',
         marginTop: 20,
-        marginLeft: '2.5%',
-        marginRight: '2.5%',
+        marginLeft: '5%',
+        marginRight: '5%',
+        marginBottom: 50,
+        '@media (min-width: 960px)': {
+            width: '45%',
+            float: 'left',
+            marginTop: 20,
+            marginLeft: '2.5%',
+            marginRight: '2.5%',
+        }
     },
     registerBtn: {
         fontSize: 12,

@@ -14,6 +14,7 @@ import AllMyCourses from './allMyCourses';
 import MyCoursesContainer from './myCourses';
 import RedirectPage from '../components/redirectPage';
 import Container from '../components/container';
+import Privacy from '../components/privacy';
 import Infinite from './infinite';
 import MyPortfolio from './myPortfolio';
 import MyHistory from './myHistory';
@@ -33,6 +34,7 @@ class App extends Component {
                                 <Route path="/register" component={Register}/>
                                 <Route path='/forgotPassword' component={ForgotPassword}/>
                                 <Route path='/myPortfolio' component={MyPortfolio}/>
+                                <Route path='/privacy' component={Privacy}/>
                                 <Route path='/myHistory' component={MyHistory}/>
                                 <Route path='/myCourses' component={AllMyCourses}/>
                                 <Route path='/infinite' component={Infinite}/>

@@ -34,6 +34,9 @@ const styles = theme => ({
         backgroundSize: '100%',
         backgroundSize: 'cover',
         position: 'relative',
+        '@media (min-width: 960px)': {
+            height: 600,
+        },
         '@media (min-width: 1280px)': {
             height: 550,
         }
@@ -50,6 +53,15 @@ const styles = theme => ({
         height: 90,
         '&:hover': {
             background: '#FFFFFF',
+        },
+        '@media (min-width: 960px)': {
+            width: '40%',
+            background: '#FFFFFF',
+            position: 'relative',
+            paddingLeft: '10%',
+            zIndex: 9999,
+            top: 129,
+            borderRadius: 0,
         },
         '@media (min-width: 1280px)': {
             width: '50%',
@@ -130,17 +142,33 @@ const styles = theme => ({
     },
     cardUdemImage: {
         width: '100%',
+        '@media (min-width: 960px)': {
+            width: '100%',
+            height: '100%',
+        },
     },
     cardUdemImageContainer: {
-        margin: 0
+        margin: 0,
+        '@media (min-width: 960px)': {
+            height: 36,
+        },
     },
     cardContainerUdem: {
         padding: 0
     },
     descriptionProductContainer: {
-        width: '50%',
+        width: '90%',
         float: 'left',
-        marginLeft: '25%',
+        marginLeft: '5%',
+        '@media (min-width: 600px)': {
+            width: '50%',
+            float: 'left',
+            marginLeft: '25%',
+        },
+        '@media (min-width: 960px)': {
+            width: '40%',
+            marginLeft: 0,
+        },
         '@media (min-width: 1280px)': {
             width: '40%',
             marginLeft: 0,
@@ -175,9 +203,6 @@ const styles = theme => ({
         borderRadius: '50%',
         background: '#536DFE',
         padding: 2,
-    },
-    titleProductContainer: {
-        width: '60%',
     },
     mayahiiDescriptionContainer: {
         marginTop: 50,
@@ -219,6 +244,13 @@ const styles = theme => ({
         color: '#4A4A4A'
     },
     navContainer: {
+        '@media (min-width: 960px)': {
+            width: '80%',
+            marginLeft: '10%',
+            marginRight: '10%',
+            position: 'relative',
+            paddingTop: 25,
+        },
         '@media (min-width: 1280px)': {
             width: '80%',
             marginLeft: '10%',
@@ -247,6 +279,15 @@ const styles = theme => ({
         width: '90%',
         marginLeft: '5%',
         marginRight: '5%',
+        '@media (min-width: 960px)': {
+            position: 'relative',
+            top: 39,
+            // se quitan estos elementos cundo se quite el popUp UDEM
+            float: 'left',
+            width: '40%',
+            marginLeft: '50%',
+            marginRight: '5%',
+        },
         '@media (min-width: 1280px)': {
             position: 'relative',
             top: 400,
@@ -351,6 +392,10 @@ const styles = theme => ({
         color: '#455A64',
         lineHeight: '62px',
         fontWeight: 'bold',
+        fontSize: 38,
+        '@media (min-width: 600px)': {
+            fontSize: '3.5rem',
+        },
     },
     textBanner: {
         color: '#ffffff',
@@ -367,6 +412,9 @@ const styles = theme => ({
         float: 'left',
         width: '90%',
         marginLeft: '5%',
+        '@media (min-width: 960px)': {
+            top: 100,
+        },
         '@media (min-width: 1280px)': {
             width: '60%',
             marginLeft: 0,
@@ -374,9 +422,17 @@ const styles = theme => ({
         },
     },
     titleProductContainer: {
-        width: '50%',
+        width: '90%',
         float: 'left',
-        marginLeft: '25%',
+        marginLeft: '5%',
+        '@media (min-width: 600px)': {
+            width: '50%',
+            float: 'left',
+            marginLeft: '25%',
+        },
+        '@media (min-width: 960px)': {
+            marginLeft: 0,
+        },
         '@media (min-width: 1280px)': {
             marginLeft: 0,
         },
@@ -439,7 +495,7 @@ class Login extends Component {
         const {anchorEl} = this.state;
         return(
             <div>
-                <Hidden smDown="smDown">
+                <Hidden mdDown="mdDown">
                     <AppBar className={classes.subHeader} position="static" color="default">
                         <Toolbar>
                             <Tabs className={classes.navMenu}>
@@ -474,7 +530,7 @@ class Login extends Component {
                         </aside>
                         <Icon className={classes.bannerLinkIcon}>arrow_forward</Icon>
                     </Button>
-                    <Hidden mdUp="mdUp">
+                    <Hidden lgUp="lgUp">
                         <section className={classes.popUpUdem}>
                             <Card className={classes.card} onClick={this.udemPopulation}>
                                 <CardContent className={classes.cardContainerUdem}>
@@ -510,7 +566,7 @@ class Login extends Component {
                                 número de alumnos.
                             </Typography>
                         </section>
-                        <Hidden smDown="smDown">
+                        <Hidden mdDown="mdDown">
                             <section className={classes.popUpUdem}>
                                 <Card className={classes.card}>
                                     <CardContent className={classes.cardContainerUdem}>

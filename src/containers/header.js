@@ -39,6 +39,10 @@ const styles = theme => ({
         top: '-5px',
         width: 25,
         height: 25,
+        '@media (min-width: 960px)': {
+            width: 40,
+            height: 40,
+        },
         '@media (min-width: 1280px)': {
             margin: 0,
             position: 'absolute',
@@ -249,23 +253,26 @@ class Header extends React.Component {
                                     <img src="https://s3.amazonaws.com/mayahii-frontend/img/mayahiiLogoNew.png" alt="" className={classes.imgHeader}/>
                                 </figure>
                             </Button>
-                            <Hidden smDown="smDown">
+                            <Hidden mdDown="mdDown">
                                 <Tabs className={classes.navMenu}>
                                     <Tab className={classes.navItem} button="button" component={Link} to={`/myCourses`} label="Mis Cursos"/>
-                                    <Tab className={classes.navItem} button="button" component="a" href="https://www.mayahii.com/#!/infinite" label="Infinite"/>
+                                    <Tab className={classes.navItem} button="button" component="a" href="https://www.mayahii.com/m#!/infinite" label="Infinite"/>
+                                    <Tab className={classes.navItem} button="button" component="a" href="https://www.mayahii.com/m#!/RAs" label="Recursos abiertos"/>
                                 </Tabs>
                             </Hidden>
                             {
                                 !this.props.userInSession.usuario
                                     ?
-                                        <div className={classes.buttonsContainer}>
-                                            <Button component={Link} to={`/register`}  className={classes.registerText}>
-                                                Regístrate
-                                            </Button>
-                                            <Button className={classes.loginText} variant="contained" component={Link} to={`/login`}>
-                                                Iniciar sesión
-                                            </Button>
-                                        </div>
+                                        <Hidden mdDown="mdDown">
+                                            <div className={classes.buttonsContainer}>
+                                                <Button component={Link} to={`/register`}  className={classes.registerText}>
+                                                    Regístrate
+                                                </Button>
+                                                <Button className={classes.loginText} variant="contained" component={Link} to={`/login`}>
+                                                    Iniciar sesión
+                                                </Button>
+                                            </div>
+                                        </Hidden>
                                     :
                                         <div className={classes.headerInfoUser}>
                                             <Button
@@ -289,39 +296,60 @@ class Header extends React.Component {
                                                     <MenuItem onClick={this.handleCloseUser} button="button" component={Link} to={`/myPortfolio`}>Portafolio</MenuItem>
                                                     <MenuItem onClick={this.handleCloseUser} button="button" component={Link} to={`/myHistory`}>Historial</MenuItem>
                                                     <MenuItem onClick={this.handleCloseUser} button="button" component="a" href="http://ayuda.mayahii.com/" target="_blank">Centro de ayuda</MenuItem>
+                                                    <Divider/>
+                                                    <MenuItem onClick={this.handleCloseUser} button="button" component="a" href="https://www.mayahii.com/catalogos/adminProductos.action" target="_blank">Administrar</MenuItem>
+                                                    <Divider/>
                                                     <MenuItem onClick={this.handleLogOut}>Logout</MenuItem>
                                                 </Menu>
                                             </Hidden>
                                         </div>
                             }
-                            <Hidden mdUp="mdUp">
+                            <Hidden lgUp="lgUp">
                                 <Button className={classes.btnMenu} onClick={this.handleDrawerOpen}>
                                     <Icon>menu</Icon>
                                 </Button>
                                 <SwipeableDrawer anchor="right" open={this.state.right} onClose={this.handleDrawerClose} onOpen={this.handleDrawerOpen}>
                                     <div tabIndex={0} role="button" onClick={this.handleDrawerClose} onKeyDown={this.handleDrawerClose}>
-                                        <div className={classes.list}>
-                                            <ListItem button="button" component={Link} to={`/`}>
-                                                <ListItemText primary="Inicio"/>
-                                            </ListItem>
-                                            <ListItem button="button" component={Link} to={`/myCourses`}>
-                                                <ListItemText primary="Mis cursos"/>
-                                            </ListItem>
-                                            <Divider/>
-                                            <ListItem button="button" component={Link} to={`/myHistory`}>
-                                                <ListItemText primary="Historial"/>
-                                            </ListItem>
-                                            <ListItem button="button" component={Link} to={`/myPortfolio`}>
-                                                <ListItemText primary="Portafolio"/>
-                                            </ListItem>
-                                            <Divider/>
-                                            <ListItem button="button" component="a" href="http://ayuda.mayahii.com/" target="_blank">
-                                                <ListItemText primary="Centro de ayuda"/>
-                                            </ListItem>
-                                            <ListItem onClick={this.handleLogOut}>
-                                                <ListItemText primary="Logout"/>
-                                            </ListItem>
-                                        </div>
+                                        {
+                                            !this.props.userInSession.usuario
+                                                ?
+                                                    <div className={classes.list}>
+                                                        <ListItem button="button" component={Link} to={`/login`}>
+                                                            <ListItemText primary="Login"/>
+                                                        </ListItem>
+                                                        <ListItem button="button" component={Link} to={`/register`}>
+                                                            <ListItemText primary="Regístro"/>
+                                                        </ListItem>
+                                                    </div>
+                                                :
+                                                    <div className={classes.list}>
+                                                        <ListItem button="button" component={Link} to={`/`}>
+                                                            <ListItemText primary="Inicio"/>
+                                                        </ListItem>
+                                                        <ListItem button="button" component={Link} to={`/myCourses`}>
+                                                            <ListItemText primary="Mis cursos"/>
+                                                        </ListItem>
+                                                        <Divider/>
+                                                        <ListItem button="button" component={Link} to={`/myHistory`}>
+                                                            <ListItemText primary="Historial"/>
+                                                        </ListItem>
+                                                        <ListItem button="button" component={Link} to={`/myPortfolio`}>
+                                                            <ListItemText primary="Portafolio"/>
+                                                        </ListItem>
+                                                        <Divider/>
+                                                        <ListItem button="button" component="a" href="http://ayuda.mayahii.com/" target="_blank">
+                                                            <ListItemText primary="Centro de ayuda"/>
+                                                        </ListItem>
+                                                        <Divider/>
+                                                        <ListItem button="button" component="a" href="https://www.mayahii.com/catalogos/adminProductos.action" target="_blank">
+                                                            <ListItemText primary="Administrar"/>
+                                                        </ListItem>
+                                                        <Divider/>
+                                                        <ListItem onClick={this.handleLogOut}>
+                                                            <ListItemText primary="Logout"/>
+                                                        </ListItem>
+                                                    </div>
+                                        }
                                     </div>
                                 </SwipeableDrawer>
                             </Hidden>

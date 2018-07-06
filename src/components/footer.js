@@ -162,10 +162,10 @@ class Footer extends React.Component {
                     <Toolbar className={classes.toolBar}>
                         <Tabs className={classes.navMenu}>
                             <Tab className={classes.navItem} button="button" href={`http://ayuda.mayahii.com/`} label="Contáctanos"/>
-                            <Tab className={classes.navItem} button="button" href={`https://www.mayahii.com/#!/about`} label="Acerca de"/>
+                            <Tab className={classes.navItem} button="button" href={`https://www.mayahii.com/m#!/about`} label="Acerca de"/>
                             <Tab className={classes.navItem} button="button" href={`http://mayahii.org/`} label="Fundación Mayahii"/>
-                            <Tab className={classes.navItem} button="button" href={`https://www.mayahii.com/#!/t/community_guidelines`} label="Lineamientos de la Comunidad"/>
-                            <Tab className={classes.navItem} button="button" href={`https://www.mayahii.com/#!/t/privacy`} label="Aviso de privacidad"/>
+                            <Tab className={classes.navItem} button="button" href={`https://www.mayahii.com/m#!/t/community_guidelines`} label="Lineamientos de la Comunidad"/>
+                            <Tab className={classes.navItem} button="button" href={`https://www.mayahii.com/m#!/t/privacy`} label="Aviso de privacidad"/>
                         </Tabs>
                     </Toolbar>
                     <div className={classes.navContainer}>
