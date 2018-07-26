@@ -500,7 +500,7 @@ class Login extends Component {
                         <Toolbar>
                             <Tabs className={classes.navMenu}>
                                 <Tab className={classes.navItem} button="button" href={`http://formacioncontinua.mayahii.com/`} label="FORMACIÓN DOCENTE"/>
-                                <Tab className={classes.navItem} button="button" href={`https://www.mayahii.com/#!/academy`} label="CREA TU ACADEMIA"/>
+                                <Tab className={classes.navItem} button="button" href={`https://www.mayahii.com/m#!/academy`} label="CREA TU ACADEMIA"/>
                                 <Tab className={classes.navItem} label="Universo Mayahii" aria-owns={anchorEl
                                         ? 'simple-menu'
                                         : null} aria-haspopup="true" onClick={this.handleClick}/>
@@ -530,7 +530,7 @@ class Login extends Component {
                         </aside>
                         <Icon className={classes.bannerLinkIcon}>arrow_forward</Icon>
                     </Button>
-                    <Hidden lgUp="lgUp">
+                    {/* <Hidden lgUp="lgUp">
                         <section className={classes.popUpUdem}>
                             <Card className={classes.card} onClick={this.udemPopulation}>
                                 <CardContent className={classes.cardContainerUdem}>
@@ -543,7 +543,7 @@ class Login extends Component {
                                 </CardContent>
                             </Card>
                         </section>
-                    </Hidden>
+                    </Hidden> */}
                     <div className={classes.navContainer}>
                         <section className={classes.textBannerContainer}>
                             <Typography className={classes.textBanner} variant="display1" align="left">
@@ -566,7 +566,7 @@ class Login extends Component {
                                 número de alumnos.
                             </Typography>
                         </section>
-                        <Hidden mdDown="mdDown">
+                        {/* <Hidden mdDown="mdDown">
                             <section className={classes.popUpUdem}>
                                 <Card className={classes.card}>
                                     <CardContent className={classes.cardContainerUdem}>
@@ -582,7 +582,7 @@ class Login extends Component {
                                     </CardContent>
                                 </Card>
                             </section>
-                        </Hidden>
+                        </Hidden> */}
                     </div>
                 </aside>
                 <div className={classes.navContainer}>
@@ -635,7 +635,7 @@ class Login extends Component {
                                         <Typography className={classes.descriptionText} variant="headline" gutterBottom align="left">
                                             Una Academia Mayahii es tu campus en línea disponible en minutos.  Consiste en una suite de herramientas web especialmente diseñadas para la enseñanza y el aprendizaje sobre demanda, sin límite de usuarios, sin límite de cursos, con tu imagen de marca y con accesibilidad desde cualquier lugar y cualquier dispositivo.
                                         </Typography>
-                                        <a href="https://www.mayahii.com/#!/academy" className={classes.externalLink}>
+                                        <a href="https://www.mayahii.com/m#!/academy" className={classes.externalLink}>
                                             VISITAR ACADEMIAS  <Icon className={classes.externalLinkIcon}>arrow_forward</Icon>
                                         </a>
                                     </div>

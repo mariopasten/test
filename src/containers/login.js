@@ -15,7 +15,9 @@ import IconButton from '@material-ui/core/IconButton';
 import InputLabel from '@material-ui/core/InputLabel';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import {Link} from 'react-router-dom';
+import FormControl from '@material-ui/core/FormControl';
 import {getLogin} from '../actions/index';
+import classNames from 'classnames';
 
 const styles = theme => ({
     button: {
@@ -207,7 +209,7 @@ class Login extends Component {
                                           value={this.state.userEmail}
                                           onChange={this.handleUserChange}
                                         />
-                                        <InputLabel htmlFor="passwordAdornment">Password</InputLabel>
+                                        {/* <InputLabel htmlFor="passwordAdornment">Password</InputLabel>
                                         <Input
                                             className={classes.textField}
                                             id="passwordAdornment"
@@ -225,7 +227,28 @@ class Login extends Component {
                                                 </IconButton>
                                               </InputAdornment>
                                             }
-                                        />
+                                        /> */}
+                                        <FormControl className={classNames(classes.margin, classes.textField)}>
+                                            <InputLabel htmlFor="passwordAdornment">Password</InputLabel>
+                                            <Input
+                                                className={classes.textField}
+                                                id="passwordAdornment"
+                                                type={this.state.showPassword ? 'text' : 'password'}
+                                                value={this.state.userPassword}
+                                                onChange={this.handlePasswordChange}
+                                                endAdornment={
+                                                  <InputAdornment position="end">
+                                                    <IconButton
+                                                      aria-label="Toggle password visibility"
+                                                      onClick={this.handleClickShowPassword}
+                                                      onMouseDown={this.handleMouseDownPassword}
+                                                    >
+                                                      {this.state.showPassword ? <VisibilityOff /> : <Visibility />}
+                                                    </IconButton>
+                                                  </InputAdornment>
+                                                }
+                                            />
+                                        </FormControl>
                                         <Button
                                             raised
                                             variant="contained"

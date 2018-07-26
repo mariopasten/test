@@ -11,12 +11,13 @@ import {GET_USER_AWARDS_DATA} from '../constants/actionTypes';
 import {GET_HISTORY_DATA} from '../constants/actionTypes';
 import {DELETE_VIDEO_HISTORY} from '../constants/actionTypes';
 import {FORGOT_PASSWORD} from '../constants/actionTypes';
+import {GET_BOOK_PAID} from '../constants/actionTypes';
 
-const protocol = "https";
-const subDomainString = "www";
+// const route = "https://www.mayahii.com/";
+const route = "/";
 
 export function getUserInSession(){
-    const request = axios.get(protocol+'://'+subDomainString+'.mayahii.com/panel/home_load.action?idOrg=0',{
+    const request = axios.get(`${route}panel/home_load.action?idOrg=0`,{
         withCredentials: true,
     });
     return {
@@ -26,7 +27,7 @@ export function getUserInSession(){
 }
 
 export function getLogin(userLogin, passwordLogin, ownerName, idOrg){
-    const request = axios.get(protocol+'://'+subDomainString+'.mayahii.com/accounts/loginAction',{
+    const request = axios.get(`${route}accounts/loginAction`,{
         params: {
             userLogin: userLogin,
             passwordLogin: passwordLogin,
@@ -46,7 +47,7 @@ export function getRegisterNewUser(firstName, lastName, emailUser, passUser, ter
     if(termsLogin == true) {
         terms = 'on'
     }
-    const request = axios.get(protocol+'://'+subDomainString+'.mayahii.com/accounts/createAccountAction',{
+    const request = axios.get(`${route}accounts/createAccountAction`,{
         params: {
             firstName: firstName,
             lastName: lastName,
@@ -63,7 +64,7 @@ export function getRegisterNewUser(firstName, lastName, emailUser, passUser, ter
 }
 
 export function getMyCourses(){
-    const request = axios.get(protocol+'://'+subDomainString+'.mayahii.com/miMayahii/get_mis_series',{
+    const request = axios.get(`${route}miMayahii/get_mis_series`,{
         params: {
 
         },
@@ -76,7 +77,7 @@ export function getMyCourses(){
 }
 
 export function getLogOut(){
-    const request = axios.get(protocol+'://'+subDomainString+'.mayahii.com/accounts/logOutAction',{
+    const request = axios.get(`${route}accounts/logOutAction`,{
 
         withCredentials:true
     });
@@ -87,7 +88,7 @@ export function getLogOut(){
 }
 
 export function getMyPopulations(){
-    const request = axios.get(protocol+'://'+subDomainString+'.mayahii.com/population/populationsByUser',{
+    const request = axios.get(`${route}population/populationsByUser`,{
         params: {
             user: true,
         },
@@ -110,7 +111,7 @@ export function getCoursesByPopulation(uuid){
 }
 
 export function getInfinite(academy, academyOrigin, user, idTransmitter){
-    const request = axios.get(protocol+'://'+subDomainString+'.mayahii.com/panel/get_store_courses',{
+    const request = axios.get(`${route}panel/get_store_courses`,{
         params: {
             academy: academy,
             academyOrigin: academyOrigin,
@@ -128,7 +129,7 @@ export function getInfinite(academy, academyOrigin, user, idTransmitter){
 }
 
 export function getUserAwards(user, limit, page){
-    const request = axios.get(protocol+'://'+subDomainString+'.mayahii.com/track/user_awards',{
+    const request = axios.get(`${route}track/user_awards`,{
         params: {
             limit: 100,
             user: user,
@@ -143,7 +144,7 @@ export function getUserAwards(user, limit, page){
 }
 
 export function getHistory(page){
-    const request = axios.get(protocol+'://'+subDomainString+'.mayahii.com/panel/show_history',{
+    const request = axios.get(`${route}panel/show_history`,{
         params: {
             paged: true,
             page: page
@@ -157,7 +158,7 @@ export function getHistory(page){
 }
 
 export function deleteVideoHistory(idVideo){
-    const request = axios.get(protocol+'://'+subDomainString+'.mayahii.com/panel/remove_object_history',{
+    const request = axios.get(`${route}panel/remove_object_history`,{
         params: {
             select: idVideo,
         },
@@ -170,7 +171,7 @@ export function deleteVideoHistory(idVideo){
 }
 
 export function forgotPasswordAction(email){
-    const request = axios.get(protocol+'://'+subDomainString+'.mayahii.com/panel/email_forgot_password',{
+    const request = axios.get(`${route}panel/email_forgot_password`,{
         params: {
             email: email,
         },
@@ -178,6 +179,16 @@ export function forgotPasswordAction(email){
     });
     return {
         type: "FORGOT_PASSWORD",
+        payload: request
+    }
+}
+
+export function getBooksPaidUser(){
+    const request = axios.get(`${route}commerce/get_books_paid_user`,{
+        withCredentials:true
+    });
+    return {
+        type: "GET_BOOK_PAID",
         payload: request
     }
 }

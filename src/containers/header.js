@@ -75,6 +75,9 @@ const styles = theme => ({
         width: '20%',
         marginLeft: '40%',
         marginRight: '40%',
+        '@media (min-width: 960px)': {
+            top: 9,
+        },
         '@media (min-width: 1280px)': {
             position: 'absolute',
             right: 0,
@@ -99,7 +102,7 @@ const styles = theme => ({
         marginRight: 'auto',
         marginTop: 0,
         marginBottom: 0,
-        '@media (min-width: 1280px)': {
+        '@media (min-width: 960px)': {
             width: 128,
             height: 64,
             position: 'relative',
@@ -150,14 +153,14 @@ const styles = theme => ({
         },
     },
     navItem: {
-        minWidth: 0
+        width: '25%',
     },
     navMenu: {
         position: 'absolute',
         top: 8,
-        width: '56%',
-        marginLeft: '22%',
-        marginRight: '22%'
+        width: '70%',
+        marginLeft: '15%',
+        marginRight: '15%'
     },
     progress: {
         marginLeft: '40%',
@@ -256,8 +259,8 @@ class Header extends React.Component {
                             <Hidden mdDown="mdDown">
                                 <Tabs className={classes.navMenu}>
                                     <Tab className={classes.navItem} button="button" component={Link} to={`/myCourses`} label="Mis Cursos"/>
-                                    <Tab className={classes.navItem} button="button" component="a" href="https://www.mayahii.com/m#!/infinite" label="Infinite"/>
-                                    <Tab className={classes.navItem} button="button" component="a" href="https://www.mayahii.com/m#!/RAs" label="Recursos abiertos"/>
+                                    <Tab className={classes.navItem} button="button" component={Link} to={`/red`} label="EduStore"/>
+                                    <Tab className={classes.navItem} button="button" component="a" href="https://www.mayahii.com/m#!/RAs" target="_blank" label="Recursos abiertos"/>
                                 </Tabs>
                             </Hidden>
                             {
@@ -281,7 +284,7 @@ class Header extends React.Component {
                                                 onClick={this.handleClickUser}
                                                 className={classes.btnUserMenu}
                                             >
-                                                <Hidden smDown="smDown">
+                                                <Hidden mdDown="mdDown">
                                                     <Typography className={classes.nameHeader}>{this.props.userInSession.nombre}</Typography>
                                                 </Hidden>
                                                 <Avatar alt="User Image" src={this.props.userInSession.foto} className={classes.avatar}/>
@@ -293,6 +296,7 @@ class Header extends React.Component {
                                                     open={Boolean(userMenu)}
                                                     onClose={this.handleCloseUser}
                                                 >
+                                                    <MenuItem onClick={this.handleCloseUser} component="a" href="https://www.mayahii.com/m#!/user/profile" target="_blank">Mi Perfil</MenuItem>
                                                     <MenuItem onClick={this.handleCloseUser} button="button" component={Link} to={`/myPortfolio`}>Portafolio</MenuItem>
                                                     <MenuItem onClick={this.handleCloseUser} button="button" component={Link} to={`/myHistory`}>Historial</MenuItem>
                                                     <MenuItem onClick={this.handleCloseUser} button="button" component="a" href="http://ayuda.mayahii.com/" target="_blank">Centro de ayuda</MenuItem>
@@ -320,6 +324,29 @@ class Header extends React.Component {
                                                         <ListItem button="button" component={Link} to={`/register`}>
                                                             <ListItemText primary="Regístro"/>
                                                         </ListItem>
+                                                        <Divider />
+                                                        <ListItem button="button" component={Link} to={`/myCourses`}>
+                                                            <ListItemText primary="Mis Cursos"/>
+                                                        </ListItem>
+                                                        <ListItem button="button" component={Link} to={`/red`}>
+                                                            <ListItemText primary="EduStore"/>
+                                                        </ListItem>
+                                                        <ListItem button="button" component="a" href="https://www.mayahii.com/m#!/RAs" target="_blank">
+                                                            <ListItemText primary="Recursos abiertos"/>
+                                                        </ListItem>
+                                                        <ListItem button="button" component="a" href="http://formacioncontinua.mayahii.com/" target="_blank">
+                                                            <ListItemText primary="Formación Docente"/>
+                                                        </ListItem>
+                                                        <ListItem button="button" component="a" href="https://www.mayahii.com/m#!/academy" target="_blank">
+                                                            <ListItemText primary="Crea tu Academia"/>
+                                                        </ListItem>
+                                                        <Divider />
+                                                        <ListItem button="button" component="a" href="https://www.mayahii.com/educadores" target="_blank">
+                                                            <ListItemText primary="Mayahii Educadores"/>
+                                                        </ListItem>
+                                                        <ListItem button="button" component="a" href="https://www.mayahii.com/campusgoogle" target="_blank">
+                                                            <ListItemText primary="Mayahii Campus Google"/>
+                                                        </ListItem>
                                                     </div>
                                                 :
                                                     <div className={classes.list}>
@@ -329,12 +356,21 @@ class Header extends React.Component {
                                                         <ListItem button="button" component={Link} to={`/myCourses`}>
                                                             <ListItemText primary="Mis cursos"/>
                                                         </ListItem>
+                                                        <ListItem button="button" component={Link} to={`/red`}>
+                                                            <ListItemText primary="EduStore"/>
+                                                        </ListItem>
+                                                        <ListItem button="button" component="a" href="https://www.mayahii.com/m#!/RAs" target="_blank">
+                                                            <ListItemText primary="Recursos abiertos"/>
+                                                        </ListItem>
                                                         <Divider/>
                                                         <ListItem button="button" component={Link} to={`/myHistory`}>
                                                             <ListItemText primary="Historial"/>
                                                         </ListItem>
                                                         <ListItem button="button" component={Link} to={`/myPortfolio`}>
                                                             <ListItemText primary="Portafolio"/>
+                                                        </ListItem>
+                                                        <ListItem button="button" component="a" href="https://www.mayahii.com/m#!/user/profile" target="_blank">
+                                                            <ListItemText primary="Mi Perfil"/>
                                                         </ListItem>
                                                         <Divider/>
                                                         <ListItem button="button" component="a" href="http://ayuda.mayahii.com/" target="_blank">

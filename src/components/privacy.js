@@ -22,9 +22,9 @@ const drawerWidth = 240;
 
 const styles = theme => ({
     navContainer: {
-        width: '80%',
+        width: '50%',
         marginLeft: '10%',
-        marginRight: '10%',
+        marginRight: '40%',
         position: 'relative',
         paddingTop: 100,
     },
@@ -273,6 +273,118 @@ class Privacy extends React.Component {
                 </Typography>
                 <Typography className={classes.descriptionText} variant="headline" gutterBottom align="left">
                     Dicha solicitud deberá contener, por lo menos:
+                </Typography>
+                <ul>
+                    <li>
+                        Nombre completo y domicilio del titular de los Datos Personales, u otro medio para comunicarle la respuesta a su solicitud.
+                    </li>
+                    <li>
+                        Documentos que acrediten la identidad o la representación legal del titular de los Datos Personales.
+                    </li>
+                    <li>
+                        Descripción clara y precisa de los Datos Personales respecto de los que se busca ejercer alguno de los derechos antes mencionados.
+                    </li>
+                    <li>
+                        Cualquier otro elemento o documento que facilite la localización de los Datos Personales.
+                    </li>
+                    <li>
+                        Indicar de las modificaciones a realizarse y/o las limitaciones al uso de los Datos Personales, conforme a lo establecido en el apartado 6.2. del presente Aviso de Privacidad.
+                    </li>
+                    <li>
+                        Aportar la documentación que sustente su petición.
+                    </li>
+                </ul>
+                <Typography className={classes.text} variant="display1" gutterBottom>
+                    7.2. Resolución y comunicación
+                </Typography>
+                <Typography className={classes.descriptionText} variant="headline" gutterBottom align="left">
+                    Mayahii comunicará al titular de los Datos Personales la determinación adoptada, en un plazo no mayor a 20 días hábiles contados desde la fecha en que se recibió la solicitud. Este plazo podrá ser ampliado por Mayahii en una sola ocasión por un periodo igual, siempre y cuando así lo justifiquen las circunstancias del caso.
+                </Typography>
+                <Typography className={classes.descriptionText} variant="headline" gutterBottom align="left">
+                    Con base en lo anterior, y de acuerdo con lo establecido en la Ley y en el Reglamento, Mayahii informará al titular de los Datos Personales el sentido y motivación de la resolución, por el mismo medio por el que se llevó a cabo la solicitud, y acompañará dicha resolución de las pruebas pertinentes, en su caso.
+                </Typography>
+                <Typography className={classes.descriptionText} variant="headline" gutterBottom align="left">
+                    Cuando la solicitud sea procedente, se hará efectiva por Mayahii dentro de los 15 días hábiles siguientes a la comunicación de la resolución adoptada.
+                </Typography>
+                <Typography className={classes.descriptionText} variant="headline" gutterBottom align="left">
+                    El titular podrá presentar ante el Instituto Federal de Acceso a la Información (IFAI) una solicitud de protección de datos por la respuesta recibida o falta de respuesta de Mayahii. Dicha solicitud deberá presentarse por el titular dentro de los 15 días hábiles siguientes a la fecha en que se comunique la respuesta al titular por parte de Mayahii, y se sujetará a lo previsto en la Ley y en el Reglamento.
+                </Typography>
+                <Typography className={classes.descriptionText} variant="headline" gutterBottom align="left">
+                    En caso de solicitudes de acceso a Datos Personales, será necesario que el solicitante o su representante legal acrediten previamente su identidad.
+                </Typography>
+                <Typography className={classes.descriptionText} variant="headline" gutterBottom align="left">
+                    La obligación de acceso a la información se dará por cumplida cuando Mayahii ponga a disposición del titular los Datos Personales o mediante la expedición de copias simples o documentos electrónicos.
+                </Typography>
+                <Typography className={classes.descriptionText} variant="headline" gutterBottom align="left">
+                    En el supuesto en que una persona solicite a Mayahii el acceso a sus Datos Personales presumiendo que éste es el responsable y resultara que no lo es, bastará con que Mayahii así se lo indique al titular por cualquier medio, (de los establecidos en este apartado), para tener por desahogada la solicitud.
+                </Typography>
+                <Typography className={classes.descriptionText} variant="headline" gutterBottom align="left">
+                    La contestación a tu solicitud para acceso, rectificación, cancelación u oposición de los Datos Personales será gratuita. Deberás cubrir únicamente los gastos justificados de envío o el costo de reproducción en copias u otros formatos, los cuales, en su momento, te hará saber Mayahii.
+                </Typography>
+                <Typography className={classes.descriptionText} variant="headline" gutterBottom align="left">
+                    En caso que la misma persona reitere la solicitud de acceso, rectificación, cancelación u oposición de los Datos Personales en un periodo menor a 12 meses contado a partir de la fecha de la última solicitud, la contestación a tu solicitud podrá tener un costo adicional que señale Mayahii, de acuerdo con lo establecido en los artículos 35 y 93 de la Ley y del Reglamento, respectivamente.
+                </Typography>
+                <Typography className={classes.text} variant="display1" gutterBottom>
+                    7.3. Negativa para acceder a Datos Personales
+                </Typography>
+                <Typography className={classes.descriptionText} variant="headline" gutterBottom align="left">
+                    Mayahii podrá negar el acceso total o parcial a los Datos Personales o a la realización de la rectificación, cancelación u oposición al tratamiento de los mismos, en los siguientes supuestos:
+                </Typography>
+                <ul>
+                    <li>
+                        Cuando el solicitante no sea el titular o el representante legal no esté acreditado para ello.
+                    </li>
+                    <li>
+                        Cuando en la Base de Datos de Mayahii no se encuentren los Datos Personales del solicitante.
+                    </li>
+                    <li>
+                        Cuando se lesionen los derechos de un tercero.
+                    </li>
+                    <li>
+                        Cuando exista impedimento legal o resolución de una autoridad.
+                    </li>
+                    <li>
+                        Cuando la rectificación, cancelación u oposición haya sido previamente realizada, de manera que la solicitud carezca de materia.
+                    </li>
+                </ul>
+                <Typography className={classes.text} variant="display1" gutterBottom>
+                    7.4. Consecuencias de la cancelación
+                </Typography>
+                <Typography className={classes.descriptionText} variant="headline" gutterBottom align="left">
+                    La cancelación de Datos Personales dará lugar a un periodo de bloqueo tras el cual Mayahii procederá a la supresión de los datos correspondientes. Una vez cancelados los Datos Personales correspondientes, Mayahii dará aviso a su titular.
+                </Typography>
+                <Typography className={classes.descriptionText} variant="headline" gutterBottom align="left">
+                    Hecho lo anterior, Mayahii podrá conservar los Datos Personales exclusivamente para efectos de las responsabilidades derivadas del tratamiento a que se refiere el Aviso de Publicidad.
+                </Typography>
+                <Typography className={classes.descriptionText} variant="headline" gutterBottom align="left">
+                    Cuando los Datos Personales se hubiesen transmitido a terceros antes de la rectificación o cancelación y sean tratados por dichos terceros, Mayahii deberá hacer de su conocimiento la solicitud presentada por el titular, para que procedan a efectuar tales rectificaciones o cancelaciones.
+                </Typography>
+                <Typography className={classes.descriptionText} variant="headline" gutterBottom align="left">
+                    Mayahii no estará obligado a cancelar tus Datos Personales cuando se trate de los supuestos establecidos en el artículo 26 de la Ley.
+                </Typography>
+                <Typography className={classes.text} variant="display1" gutterBottom>
+                    8. Cambios al aviso de privacidad
+                </Typography>
+                <Typography className={classes.descriptionText} variant="headline" gutterBottom align="left">
+                    Mayahii se reserva el derecho de efectuar, en cualquier momento, modificaciones o actualizaciones al presente Aviso de Privacidad, para la atención de novedades legislativas o jurisprudenciales, políticas internas, nuevos requerimientos para la prestación u ofrecimiento de sus productos y servicios, o por prácticas comerciales.
+                </Typography>
+                <Typography className={classes.descriptionText} variant="headline" gutterBottom align="left">
+                    Por lo anterior, en caso que Mayahii llegare a modificar el contenido del presente Aviso de Privacidad, lo hará de tu conocimiento mediante alguna de las formas y medios establecidos en el apartado 5. del presente Aviso.
+                </Typography>
+                <Typography className={classes.descriptionText} variant="headline" gutterBottom align="left">
+                    El presente Aviso de Privacidad fue actualizado por última ocasión el 28 de Noviembre del 2017.
+                </Typography>
+                <Typography className={classes.text} variant="display1" gutterBottom>
+                    9. Transferencia de Datos Personales
+                </Typography>
+                <Typography className={classes.descriptionText} variant="headline" gutterBottom align="left">
+                    Mayahii podrá transferir tus Datos Personales a alguno de sus proveedores, aliados o terceros nacionales o extranjeros con el fin de llevar a cabo las Finalidades del Tratamiento establecidas en el presente Aviso de Privacidad.  Si usted no manifiesta su oposición para que sus Datos Personales sean transferidos a terceros, se entenderá que ha otorgado a Mayahii su consentimiento para ello.
+                </Typography>
+                <Typography className={classes.text} variant="display1" gutterBottom>
+                    Consideraciones finales – Carácter informativo del presente documento
+                </Typography>
+                <Typography className={classes.descriptionText} variant="headline" gutterBottom align="left">
+                    El contenido de este Aviso de Privacidad es de carácter meramente informativo, por lo que en caso de que desees expresar tu aceptación o rechazo al contenido del mismo, te invitamos a ingresar a las secciones de recopilación de Datos Personales establecidas en las Páginas de Internet de Mayahii, en donde podrás emitir dicha aceptación o rechazo tanto al contenido del presente Aviso de Privacidad como a la posible transferencia de tus Datos Personales, o en su caso, envíes la solicitud correspondiente al <a href="http://ayuda.mayahii.com/" target="_blank">Centro de Ayuda de Mayahii</a>.
                 </Typography>
             </div>
         );

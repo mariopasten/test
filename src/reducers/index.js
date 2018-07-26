@@ -11,6 +11,7 @@ import Userawards from './get_user_awards_reducer';
 import UserHistory from './get_history_reducer';
 import DeleteVideo from './delete_video_history_reducer';
 import ForgotPassword from './forgot_password_reducer';
+import KitsPaidUser from './get_books_paid_user_reducer';
 
 const rootReducer = combineReducers({
     state: (state = {}) => state,
@@ -26,6 +27,7 @@ const rootReducer = combineReducers({
     userHistory: UserHistory,
     deleteVideo: DeleteVideo,
     forgotPassword: ForgotPassword,
+    kitsPaidUser: KitsPaidUser,
 });
 
 export default rootReducer;
